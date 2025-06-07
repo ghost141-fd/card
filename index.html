@@ -9,159 +9,172 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    body {
+    body, html {
+      height: 100%;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      scroll-behavior: smooth;
       color: #333;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
     }
-    .container {
-      max-width: 960px;
-      width: 100%;
-      background: #fff;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+    /* Первая секция - fullscreen с фоном */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1470&q=80') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 0 20px;
+      color: white;
+      position: relative;
     }
-    header {
-      margin-bottom: 40px;
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 62, 80, 0.7);
+      z-index: 0;
     }
-    h1 {
-      font-size: 3rem;
-      color: #2c3e50;
-      margin-bottom: 20px;
-      line-height: 1.2;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      line-height: 1.1;
+      font-weight: 700;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
     }
-    .buttons {
+    .hero .buttons {
       display: flex;
-      justify-content: center;
       gap: 20px;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 50px;
     }
-    .button {
-      background-color: #2c3e50;
-      color: #fff;
-      padding: 15px 25px;
-      text-decoration: none;
+    .hero .button {
+      background-color: #27ae60;
+      color: white;
+      padding: 15px 30px;
       border-radius: 8px;
-      font-size: 1rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: background-color 0.3s;
-      min-width: 180px;
+      gap: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      min-width: 200px;
       justify-content: center;
     }
-    .button:hover {
-      background-color: #34495e;
+    .hero .button:hover {
+      background-color: #219150;
     }
-    .icon-button img {
-      width: 20px;
-      height: 20px;
+    .hero .icon-button img {
+      width: 22px;
+      height: 22px;
     }
-    section {
+
+    /* Вторая секция с информацией */
+    .content {
+      max-width: 960px;
+      margin: 50px auto 80px;
+      padding: 0 20px;
       text-align: left;
     }
-    h2 {
-      font-size: 2rem;
+    .content h2 {
+      font-size: 2.5rem;
       margin-bottom: 20px;
       color: #2c3e50;
     }
-    ul {
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .content ul {
       font-size: 1.1rem;
       line-height: 1.6;
       list-style: none;
       padding-left: 20px;
+      color: #34495e;
     }
-    ul li::before {
+    .content ul li::before {
       content: '✅';
       margin-right: 10px;
       color: #27ae60;
     }
+    .content ul li {
+      margin-bottom: 14px;
+    }
+
+    /* Футер */
     footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #777;
       text-align: center;
+      padding: 20px 0;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      margin-bottom: 30px;
     }
 
     /* Адаптив */
     @media (max-width: 768px) {
-      .container {
-        padding: 25px 20px;
+      .hero h1 {
+        font-size: 2.4rem;
       }
-      h1 {
-        font-size: 2.2rem;
+      .hero .button {
+        min-width: 140px;
+        font-size: 1rem;
+        padding: 12px 20px;
       }
-      p {
+      .content h2 {
+        font-size: 2rem;
+      }
+      .content p {
         font-size: 1rem;
       }
-      .buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-      .button {
-        min-width: 100%;
-        font-size: 1.1rem;
-        padding: 15px 0;
-      }
-      section {
-        text-align: center;
-      }
-      ul {
-        padding-left: 0;
-      }
-      ul li::before {
-        display: none;
-      }
-      ul li {
-        margin-bottom: 12px;
+      .content ul {
+        padding-left: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🚀 Продвижение на Яндекс.Картах и реклама</h1>
-      <p>Выводим компании в ТОП-1 по ключевым запросам. Работаем по всей России. Более 5 лет опыта в сфере геомаркетинга.</p>
-    </header>
-    <div class="buttons">
-      <a href="https://t.me/YandexCartBot" class="button">📊 Рассчитать стоимость</a>
-      <a href="https://wa.me/+79871577621" class="button icon-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" /> Написать
-      </a>
-      <a href="https://t.me/Goust_141OTG" class="button icon-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" /> Написать
-      </a>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🚀 Продвижение на Яндекс.Картах и настройка рекламы</h1>
+      <div class="buttons">
+        <a href="https://t.me/YandexCartBot" class="button">📊 Рассчитать стоимость</a>
+        <a href="https://wa.me/+79871577621" class="button icon-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" /> Написать
+        </a>
+        <a href="https://t.me/Goust_141OTG" class="button icon-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" /> Написать
+        </a>
+      </div>
     </div>
-    <section>
-      <h2>Почему выбирают нас:</h2>
-      <ul>
-        <li>Настройка и продвижение в Яндекс.Картах от профессионалов</li>
-        <li>Продвижение по SEO: растем в выдаче без переплат</li>
-        <li>Помощь в написании отзывов и заполнении карточек</li>
-        <li>Рекламные кампании в Яндекс.Директ и поиск</li>
-        <li>Детальная аналитика и отчеты по результатам</li>
-      </ul>
-    </section>
-    <footer>
-      <p>© 2025 Продвижение в Яндекс.Картах | Все права защищены</p>
-    </footer>
-  </div>
+  </section>
+
+  <section class="content">
+    <h2>Почему выбирают нас:</h2>
+    <p>Мы давно на рынке и успешно продвигаем компании, помогая им занять лидирующие позиции в Яндекс.Картах. Благодаря комплексному подходу и экспертным знаниям, мы выводим наших клиентов в ТОП-1 среди конкурентов. Наш опыт и индивидуальный подход позволяют максимально увеличить видимость бизнеса и привлечь новых клиентов.</p>
+    <ul>
+      <li>Настройка и продвижение в Яндекс.Картах от профессионалов</li>
+      <li>Продвижение по SEO: растем в выдаче без переплат</li>
+      <li>Помощь в написании отзывов и заполнении карточек</li>
+      <li>Рекламные кампании в Яндекс.Директ и поиск</li>
+      <li>Детальная аналитика и отчеты по результатам</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2025 Продвижение в Яндекс.Картах | Все права защищены
+  </footer>
 </body>
 </html>
