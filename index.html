@@ -8,60 +8,82 @@
 <meta name="keywords" content="продвижение на яндекс картах, продвижение компании в яндекс, яндекс карты реклама, настройка рекламы в яндекс, продвижение бизнеса, геосервисы яндекс" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  html, body {
+  /* Сброс стилей */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
     color: #333;
   }
 
-  /* Фон на весь экран */
-  body {
-    background: url('https://i.postimg.cc/kXDnBKqx/IMG-3624.jpg') no-repeat center center fixed;
+  /* Первая секция - full screen с фоном */
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url('https://i.postimg.cc/kXDnBKqx/IMG-3624.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
-    padding: 40px 40px 30px 40px;
-    box-sizing: border-box;
+    padding: 30px 40px;
     color: white;
   }
 
-  /* Заголовок - в верхнем левом углу */
-  h1 {
-    font-weight: 700;
-    font-size: 3.5rem;
-    max-width: 700px;
-    text-shadow:
-      2px 2px 8px rgba(0,0,0,0.85),
-      0 0 10px rgba(0,0,0,0.6);
-    user-select: none;
-    margin: 0;
+  /* Наложение затемнения для контраста */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%);
+    z-index: 0;
   }
 
-  /* Контейнер с кнопками внизу слева */
-  .buttons {
+  /* Контент внутри hero */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Заголовок - в верхнем левом углу, с тенью и плавным максимумом ширины */
+  .hero-header {
+    font-size: 3.8rem;
+    font-weight: 700;
+    max-width: 700px;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    user-select: none;
+  }
+
+  /* Контейнер кнопок - снизу слева */
+  .hero-buttons {
+    position: relative;
+    z-index: 1;
     display: flex;
     gap: 20px;
   }
 
-  a.button {
-    background-color: rgba(39,174,96, 0.9);
-    padding: 15px 32px;
+  .hero-buttons a {
+    background-color: rgba(39,174,96, 0.85);
+    color: white;
+    padding: 14px 30px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1.2rem;
-    color: white;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     box-shadow: 0 5px 15px rgba(39,174,96,0.6);
     transition: background-color 0.3s ease, transform 0.25s ease;
     user-select: none;
   }
-  a.button:hover {
+
+  .hero-buttons a:hover {
     background-color: rgba(27,120,67, 0.95);
     transform: scale(1.05);
   }
@@ -72,31 +94,39 @@
     filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
   }
 
-  /* Контейнер кнопок при мобильном */
+  /* Контейнер кнопок внизу слева */
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  /* Обертка для размещения кнопок снизу слева */
+  .hero-footer {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Мобильная адаптация */
   @media (max-width: 768px) {
-    body {
-      padding: 30px 20px 20px 20px;
-      height: auto;
-      min-height: 100vh;
-      flex-direction: column;
-      justify-content: flex-start;
+    .hero {
+      padding: 20px 20px;
+      justify-content: space-between;
     }
-    h1 {
-      font-size: 2rem;
+    .hero-header {
+      font-size: 2.5rem;
       max-width: 90vw;
-      margin-bottom: 20px;
     }
-    .buttons {
+    .hero-buttons {
       flex-direction: column;
-      gap: 12px;
-      margin-top: auto;
-      padding-bottom: 20px;
+      gap: 14px;
     }
-    a.button {
+    .hero-buttons a {
       font-size: 1.1rem;
-      padding: 12px 24px;
-      justify-content: center;
+      padding: 12px 25px;
       min-width: 180px;
+      justify-content: center;
     }
     .icon {
       width: 18px;
@@ -104,16 +134,18 @@
     }
   }
 
-  /* Ниже — остальные секции, прокрутка */
+  /* Остальная часть сайта */
   main {
     max-width: 900px;
-    margin: 60px auto;
+    margin: 60px auto 80px auto;
     padding: 0 20px;
     color: #333;
   }
+
   section {
     margin-bottom: 60px;
   }
+
   h2 {
     font-weight: 700;
     font-size: 2.6rem;
@@ -121,26 +153,46 @@
     color: #1b2634;
     text-align: center;
   }
+
   p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #444;
     margin-bottom: 20px;
   }
+
+  details {
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #219653;
+  }
+
 </style>
 </head>
 <body>
 
-  <h1>Продвижение на Яндекс.Картах и настройка рекламы</h1>
-  <div class="buttons">
-    <a href="https://t.me/YandexCartBot" class="button" target="_blank" rel="noopener noreferrer">Рассчитать стоимость</a>
-    <a href="https://wa.me/+79871577621" class="button" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
-    </a>
-    <a href="https://t.me/Goust_141OTG" class="button" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
-    </a>
-  </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-header">Продвижение на Яндекс.Картах и настройка рекламы</h1>
+    </div>
+
+    <div class="hero-footer">
+      <div class="hero-buttons">
+        <a href="https://t.me/YandexCartBot" target="_blank" rel="noopener noreferrer">Рассчитать стоимость</a>
+        <a href="https://wa.me/+79871577621" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
+        </a>
+        <a href="https://t.me/Goust_141OTG" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
+        </a>
+      </div>
+    </div>
+  </section>
 
   <main>
     <section id="about">
