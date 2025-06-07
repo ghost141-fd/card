@@ -8,59 +8,52 @@
 <meta name="keywords" content="продвижение на яндекс картах, продвижение компании в яндекс, яндекс карты реклама, настройка рекламы в яндекс, продвижение бизнеса, геосервисы яндекс" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body, html {
-    height: 100%;
+  html, body {
+    margin: 0; padding: 0; height: 100%;
     font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth;
-    color: #333;
     overflow-x: hidden;
+    color: #333;
   }
 
-  /* === Hero Section (Первый экран) === */
-  .hero {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    background: url('https://i.postimg.cc/kXDnBKqx/IMG-3624.jpg') no-repeat center center;
+  /* Фон на весь экран */
+  body {
+    background: url('https://i.postimg.cc/kXDnBKqx/IMG-3624.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 40px;
+    height: 100vh;
+    padding: 40px 40px 30px 40px;
+    box-sizing: border-box;
     color: white;
   }
 
-  /* Заголовок в верхнем левом углу */
-  .hero-header {
-    max-width: 650px;
+  /* Заголовок - в верхнем левом углу */
+  h1 {
     font-weight: 700;
     font-size: 3.5rem;
-    line-height: 1.1;
-    /* Чёткая тень для контраста */
+    max-width: 700px;
     text-shadow:
-      2px 2px 6px rgba(0,0,0,0.8),
-      0 0 10px rgba(0,0,0,0.7);
+      2px 2px 8px rgba(0,0,0,0.85),
+      0 0 10px rgba(0,0,0,0.6);
     user-select: none;
+    margin: 0;
   }
 
-  /* Обертка кнопок внизу слева */
-  .hero-buttons {
+  /* Контейнер с кнопками внизу слева */
+  .buttons {
     display: flex;
-    gap: 18px;
-    padding-bottom: 30px;
+    gap: 20px;
   }
 
-  .button {
+  a.button {
     background-color: rgba(39,174,96, 0.9);
-    color: white;
-    padding: 14px 32px;
-    border-radius: 45px;
-    text-decoration: none;
-    font-size: 1.2rem;
+    padding: 15px 32px;
+    border-radius: 50px;
     font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -68,29 +61,65 @@
     transition: background-color 0.3s ease, transform 0.25s ease;
     user-select: none;
   }
-  .button:hover {
+  a.button:hover {
     background-color: rgba(27,120,67, 0.95);
-    transform: scale(1.07);
+    transform: scale(1.05);
   }
 
-  .icon-button img {
+  .icon {
     width: 22px;
     height: 22px;
     filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
   }
 
-  /* === Контент секции === */
-  section {
+  /* Контейнер кнопок при мобильном */
+  @media (max-width: 768px) {
+    body {
+      padding: 30px 20px 20px 20px;
+      height: auto;
+      min-height: 100vh;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    h1 {
+      font-size: 2rem;
+      max-width: 90vw;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+      padding-bottom: 20px;
+    }
+    a.button {
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      justify-content: center;
+      min-width: 180px;
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  /* Ниже — остальные секции, прокрутка */
+  main {
     max-width: 900px;
     margin: 60px auto;
     padding: 0 20px;
+    color: #333;
+  }
+  section {
+    margin-bottom: 60px;
   }
   h2 {
-    text-align: center;
     font-weight: 700;
     font-size: 2.6rem;
     margin-bottom: 30px;
     color: #1b2634;
+    text-align: center;
   }
   p {
     font-size: 1.1rem;
@@ -98,241 +127,57 @@
     color: #444;
     margin-bottom: 20px;
   }
-
-  /* === Этапы работы === */
-  .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .step {
-    background: white;
-    border-radius: 12px;
-    padding: 20px 25px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  .step-number {
-    flex-shrink: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    background-color: #27ae60;
-    color: white;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(39,174,96,0.5);
-  }
-  .step-title {
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin-bottom: 6px;
-    color: #27ae60;
-  }
-  .step-desc {
-    font-size: 1rem;
-    color: #555;
-  }
-
-  /* === FAQ === */
-  .faq-item {
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    padding: 18px 25px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    cursor: pointer;
-    transition: background-color 0.25s ease;
-  }
-  .faq-item:hover {
-    background-color: #e6f4ea;
-  }
-  .faq-question {
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: #1b2634;
-    user-select: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .faq-answer {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #444;
-    display: none;
-    line-height: 1.5;
-  }
-  .faq-item.active .faq-answer {
-    display: block;
-  }
-  .faq-toggle {
-    font-size: 1.5rem;
-    user-select: none;
-    transition: transform 0.3s ease;
-  }
-  .faq-item.active .faq-toggle {
-    transform: rotate(45deg);
-  }
-
-  /* === Footer === */
-  footer {
-    text-align: center;
-    padding: 25px 20px;
-    background-color: #1b2634;
-    color: #a0b0bf;
-    font-size: 0.9rem;
-  }
-
-  /* === Адаптив === */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 25px 20px;
-      justify-content: space-between;
-    }
-    .hero-header {
-      font-size: 2rem;
-      max-width: 90vw;
-    }
-    .hero-buttons {
-      flex-direction: column;
-      gap: 12px;
-      padding-bottom: 20px;
-    }
-    .button {
-      padding: 12px 24px;
-      font-size: 1.05rem;
-      min-width: 180px;
-      justify-content: center;
-    }
-    .icon-button img {
-      width: 18px;
-      height: 18px;
-    }
-  }
 </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-  <h1 class="hero-header">Продвижение на Яндекс.Картах и настройка рекламы</h1>
-  <div class="hero-buttons">
+  <h1>Продвижение на Яндекс.Картах и настройка рекламы</h1>
+  <div class="buttons">
     <a href="https://t.me/YandexCartBot" class="button" target="_blank" rel="noopener noreferrer">Рассчитать стоимость</a>
-    <a href="https://wa.me/+79871577621" class="button icon-button" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" /> Написать
+    <a href="https://wa.me/+79871577621" class="button" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
     </a>
-    <a href="https://t.me/Goust_141OTG" class="button icon-button" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" /> Написать
+    <a href="https://t.me/Goust_141OTG" class="button" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
     </a>
   </div>
-</section>
 
-<!-- About Section -->
-<section id="about">
-  <h2>О нас</h2>
-  <p>Мы уже более 5 лет успешно занимаемся продвижением компаний на Яндекс.Картах и настройкой эффективной рекламы. Наши клиенты получают стабильный поток новых заказов и становятся лидерами рынка в своих регионах.</p>
-  <p>Мы выводим бизнес в ТОП-1 среди конкурентов, используя передовые технологии и индивидуальный подход. Работаем по всей России и гарантируем качество результата.</p>
-</section>
+  <main>
+    <section id="about">
+      <h2>О нас</h2>
+      <p>Мы уже более 5 лет успешно занимаемся продвижением компаний на Яндекс.Картах и настройкой эффективной рекламы. Наши клиенты получают стабильный поток новых заказов и становятся лидерами рынка в своих регионах.</p>
+      <p>Мы выводим бизнес в ТОП-1 среди конкурентов, используя передовые технологии и индивидуальный подход. Работаем по всей России и гарантируем качество результата.</p>
+    </section>
 
-<!-- Steps Section -->
-<section id="steps">
-  <h2>Этапы работы</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-number">1</div>
+    <section id="steps">
+      <h2>Этапы работы</h2>
       <div>
-        <div class="step-title">Анализ и аудит</div>
-        <div class="step-desc">Изучаем ваш бизнес, конкурентов и целевую аудиторию, чтобы создать эффективную стратегию продвижения.</div>
+        <p><strong>1. Анализ и аудит:</strong> Изучаем ваш бизнес, конкурентов и целевую аудиторию, чтобы создать эффективную стратегию продвижения.</p>
+        <p><strong>2. Оптимизация профиля:</strong> Настраиваем и оптимизируем ваш профиль на Яндекс.Картах, чтобы привлечь максимум внимания клиентов.</p>
+        <p><strong>3. Настройка рекламы:</strong> Создаём и ведём рекламные кампании, которые приводят реальных клиентов и увеличивают продажи.</p>
       </div>
-    </div>
-    <div class="step">
-      <div class="step-number">2</div>
-      <div>
-        <div class="step-title">Оптимизация профиля</div>
-        <div class="step-desc">Настраиваем и оптимизируем ваш профиль на Яндекс.Картах, чтобы привлечь максимум внимания клиентов.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-number">3</div>
-      <div>
-        <div class="step-title">Настройка рекламы</div>
-        <div class="step-desc">Создаём и ведём рекламные кампании, которые приводят реальных клиентов и увеличивают продажи.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- FAQ Section -->
-<section id="faq">
-  <h2>Часто задаваемые вопросы</h2>
-
-  <div class="faq-item" tabindex="0">
-    <div class="faq-question">
-      Как быстро будет заметен результат?
-      <span class="faq-toggle">+</span>
-    </div>
-    <div class="faq-answer">
-      Обычно первые результаты видны уже через 2-3 недели после начала работы, а устойчивый рост — через месяц.
-    </div>
-  </div>
-
-  <div class="faq-item" tabindex="0">
-    <div class="faq-question">
-      Нужно ли предоставлять доступы к Яндекс.Картам?
-      <span class="faq-toggle">+</span>
-    </div>
-    <div class="faq-answer">
-      Да, для эффективной работы нам необходим доступ к вашему профилю на Яндекс.Картах или аккаунту Яндекс.Бизнеса.
-    </div>
-  </div>
-
-  <div class="faq-item" tabindex="0">
-    <div class="faq-question">
-      Какие гарантии вы даёте?
-      <span class="faq-toggle">+</span>
-    </div>
-    <div class="faq-answer">
-      Мы гарантируем повышение видимости и улучшение позиций, однако конечный результат зависит и от специфики вашего бизнеса.
-    </div>
-  </div>
-
-  <div class="faq-item" tabindex="0">
-    <div class="faq-question">
-      Можно ли продвигать несколько филиалов?
-      <span class="faq-toggle">+</span>
-    </div>
-    <div class="faq-answer">
-      Да, мы можем продвигать несколько филиалов вашей компании в разных регионах.
-    </div>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 Продвижение на Яндекс.Картах. Все права защищены.
-</footer>
-
-<script>
-  // FAQ раскрытие
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('active');
-    });
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        item.classList.toggle('active');
-      }
-    });
-  });
-</script>
+    <section id="faq">
+      <h2>Часто задаваемые вопросы</h2>
+      <details>
+        <summary>Как быстро будет заметен результат?</summary>
+        <p>Обычно первые результаты видны уже через 2-3 недели после начала работы, а устойчивый рост — через месяц.</p>
+      </details>
+      <details>
+        <summary>Нужно ли предоставлять доступы к Яндекс.Картам?</summary>
+        <p>Да, для эффективной работы нам необходим доступ к вашему профилю на Яндекс.Картах или аккаунту Яндекс.Бизнеса.</p>
+      </details>
+      <details>
+        <summary>Какие гарантии вы даёте?</summary>
+        <p>Мы гарантируем повышение видимости и улучшение позиций, однако конечный результат зависит и от специфики вашего бизнеса.</p>
+      </details>
+      <details>
+        <summary>Можно ли продвигать несколько филиалов?</summary>
+        <p>Да, мы можем продвигать несколько филиалов вашей компании в разных регионах.</p>
+      </details>
+    </section>
+  </main>
 
 </body>
 </html>
