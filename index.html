@@ -17,7 +17,6 @@
       scroll-behavior: smooth;
       color: #333;
     }
-
     /* Первая секция - fullscreen с фоном */
     .hero {
       height: 100vh;
@@ -79,7 +78,6 @@
       width: 22px;
       height: 22px;
     }
-
     /* Вторая секция с информацией */
     .content {
       max-width: 960px;
@@ -112,7 +110,52 @@
     .content ul li {
       margin-bottom: 14px;
     }
-
+    /* Этапы работы */
+    .steps {
+      max-width: 960px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      color: #2c3e50;
+    }
+    .steps h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .steps-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 25px;
+    }
+    .step {
+      background: #f0f6fb;
+      border-radius: 12px;
+      padding: 25px 20px;
+      flex: 1 1 280px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .step-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #27ae60;
+      margin-bottom: 15px;
+    }
+    .step-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
     /* Футер */
     footer {
       text-align: center;
@@ -122,7 +165,6 @@
       border-top: 1px solid #ddd;
       margin-bottom: 30px;
     }
-
     /* Адаптив */
     @media (max-width: 768px) {
       .hero h1 {
@@ -133,7 +175,7 @@
         font-size: 1rem;
         padding: 12px 20px;
       }
-      .content h2 {
+      .content h2, .steps h2 {
         font-size: 2rem;
       }
       .content p {
@@ -141,6 +183,12 @@
       }
       .content ul {
         padding-left: 15px;
+      }
+      .steps-list {
+        flex-direction: column;
+      }
+      .step {
+        flex: 1 1 100%;
       }
     }
   </style>
@@ -173,8 +221,39 @@
     </ul>
   </section>
 
+  <section class="steps">
+    <h2>Этапы работы</h2>
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-title">Анализ конкурентов и аудит карточки</div>
+        <div class="step-desc">Изучаем вашу нишу, проверяем текущую карточку компании и выявляем точки роста для эффективного продвижения.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-title">Оптимизация информации</div>
+        <div class="step-desc">Заполняем карточку точными данными, ключевыми словами и качественными фото для повышения релевантности и доверия.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-title">Настройка рекламных кампаний</div>
+        <div class="step-desc">Создаем и оптимизируем рекламные кампании в Яндекс.Директ, чтобы привлечь максимум целевых клиентов.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-title">Мониторинг и корректировка</div>
+        <div class="step-desc">Отслеживаем результаты, анализируем статистику и вносим изменения для повышения эффективности.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-title">Отчет и поддержка</div>
+        <div class="step-desc">Предоставляем детальные отчеты и всегда готовы помочь с вопросами и дальнейшим продвижением.</div>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    © 2025 Продвижение в Яндекс.Картах | Все права защищены
+    © 2025 Продвижение на Яндекс.Картах. Все права защищены.
   </footer>
 </body>
 </html>
