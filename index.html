@@ -228,9 +228,8 @@
     </div>
   </section>
 </main>
-
 <!-- FAQ Section -->
-<section id="faq">
+<section id="faq" class="faq-section">
   <h2>Часто задаваемые вопросы</h2>
   <div class="faq-item">
     <div class="faq-question">
@@ -270,12 +269,61 @@
   </div>
 </section>
 
+<style>
+  .faq-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .faq-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+  }
+  .faq-question {
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+  }
+  .faq-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+    user-select: none;
+  }
+  .faq-answer {
+    display: none;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #444;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(question) {
+    question.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const toggle = this.querySelector('.faq-toggle');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        toggle.textContent = '+';
+      } else {
+        answer.style.display = 'block';
+        toggle.textContent = '-';
+      }
+    });
+  });
+</script>
+
 <!-- Footer -->
 <footer>
-
-<footer>
-  © 2025 Продвижение на Яндекс.Картах. Все права защищены. Разработка и поддержка — ваша команда.
+  <p>© 2025 Продвижение на Яндекс.Картах. Все права защищены.</p>
 </footer>
-
-</body>
-</html>
