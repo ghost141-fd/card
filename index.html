@@ -8,7 +8,6 @@
 <meta name="keywords" content="продвижение на яндекс картах, продвижение компании в яндекс, яндекс карты реклама, настройка рекламы в яндекс, продвижение бизнеса, геосервисы яндекс" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  /* Сброс стилей */
   * {
     box-sizing: border-box;
   }
@@ -18,12 +17,11 @@
     color: #333;
   }
 
-  /* Первая секция - full screen с фоном */
   .hero {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-image: url('https://i.postimg.cc/kXDnBKqx/IMG-3624.jpg');
+    background-image: url('https://i.postimg.cc/2yxRtjQF/IMG-3630.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,7 +32,6 @@
     color: white;
   }
 
-  /* Наложение затемнения для контраста */
   .hero::before {
     content: "";
     position: absolute;
@@ -43,13 +40,11 @@
     z-index: 0;
   }
 
-  /* Контент внутри hero */
   .hero-content {
     position: relative;
     z-index: 1;
   }
 
-  /* Заголовок - в верхнем левом углу, с тенью и плавным максимумом ширины */
   .hero-header {
     font-size: 3.8rem;
     font-weight: 700;
@@ -59,7 +54,6 @@
     user-select: none;
   }
 
-  /* Контейнер кнопок - снизу слева */
   .hero-buttons {
     position: relative;
     z-index: 1;
@@ -94,12 +88,6 @@
     filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
   }
 
-  /* Контейнер кнопок внизу слева */
-  .hero-buttons {
-    justify-content: flex-start;
-  }
-
-  /* Обертка для размещения кнопок снизу слева */
   .hero-footer {
     display: flex;
     justify-content: flex-start;
@@ -108,7 +96,6 @@
     z-index: 1;
   }
 
-  /* Мобильная адаптация */
   @media (max-width: 768px) {
     .hero {
       padding: 20px 20px;
@@ -134,9 +121,8 @@
     }
   }
 
-  /* Остальная часть сайта */
   main {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 60px auto 80px auto;
     padding: 0 20px;
     color: #333;
@@ -154,82 +140,107 @@
     text-align: center;
   }
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #444;
-    margin-bottom: 20px;
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .tile {
+    background: #f4f4f4;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
-  details {
+  .faq-section {
+    background-image: url('https://i.postimg.cc/kMNmGs06/IMG-3629.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    color: white;
+  }
+
+  .faq-section h2 {
+    color: #fff;
+  }
+
+  .faq-section details {
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 12px;
     margin-bottom: 15px;
-    font-size: 1rem;
   }
-
-  summary {
+  .faq-section summary {
+    font-weight: bold;
     cursor: pointer;
-    font-weight: 700;
-    color: #219653;
+    font-size: 1.1rem;
   }
-
 </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-header">Продвижение на Яндекс.Картах и настройка рекламы</h1>
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-header">Продвижение на Яндекс.Картах и настройка рекламы</h1>
+  </div>
+  <div class="hero-footer">
+    <div class="hero-buttons">
+      <a href="https://t.me/YandexCartBot" target="_blank">Рассчитать стоимость</a>
+      <a href="https://wa.me/+79871577621" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
+      </a>
+      <a href="https://t.me/Goust_141OTG" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="hero-footer">
-      <div class="hero-buttons">
-        <a href="https://t.me/YandexCartBot" target="_blank" rel="noopener noreferrer">Рассчитать стоимость</a>
-        <a href="https://wa.me/+79871577621" target="_blank" rel="noopener noreferrer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
-        </a>
-        <a href="https://t.me/Goust_141OTG" target="_blank" rel="noopener noreferrer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
-        </a>
+<main>
+  <section id="about">
+    <h2>О нас</h2>
+    <p>Мы уже более 5 лет успешно занимаемся продвижением компаний на Яндекс.Картах и настройкой эффективной рекламы. Наши клиенты получают стабильный поток новых заказов и становятся лидерами рынка в своих регионах.</p>
+    <p>Мы выводим бизнес в ТОП-1 среди конкурентов, используя передовые технологии и индивидуальный подход. Работаем по всей России и гарантируем качество результата.</p>
+  </section>
+
+  <section id="steps">
+    <h2>Этапы работы</h2>
+    <div class="tiles">
+      <div class="tile">
+        <h3>Анализ и аудит</h3>
+        <p>Проводим анализ конкурентов, определяем стратегию продвижения, выявляем слабые и сильные стороны.</p>
+      </div>
+      <div class="tile">
+        <h3>Оптимизация профиля</h3>
+        <p>Настраиваем и улучшаем карточку организации: фото, описания, категории, адреса, режимы работы.</p>
+      </div>
+      <div class="tile">
+        <h3>Запуск рекламы</h3>
+        <p>Настраиваем контекстную рекламу и гео-таргетинг, чтобы привлечь максимум клиентов именно из вашего города.</p>
       </div>
     </div>
   </section>
+</main>
 
-  <main>
-    <section id="about">
-      <h2>О нас</h2>
-      <p>Мы уже более 5 лет успешно занимаемся продвижением компаний на Яндекс.Картах и настройкой эффективной рекламы. Наши клиенты получают стабильный поток новых заказов и становятся лидерами рынка в своих регионах.</p>
-      <p>Мы выводим бизнес в ТОП-1 среди конкурентов, используя передовые технологии и индивидуальный подход. Работаем по всей России и гарантируем качество результата.</p>
-    </section>
-
-    <section id="steps">
-      <h2>Этапы работы</h2>
-      <div>
-        <p><strong>1. Анализ и аудит:</strong> Изучаем ваш бизнес, конкурентов и целевую аудиторию, чтобы создать эффективную стратегию продвижения.</p>
-        <p><strong>2. Оптимизация профиля:</strong> Настраиваем и оптимизируем ваш профиль на Яндекс.Картах, чтобы привлечь максимум внимания клиентов.</p>
-        <p><strong>3. Настройка рекламы:</strong> Создаём и ведём рекламные кампании, которые приводят реальных клиентов и увеличивают продажи.</p>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Часто задаваемые вопросы</h2>
-      <details>
-        <summary>Как быстро будет заметен результат?</summary>
-        <p>Обычно первые результаты видны уже через 2-3 недели после начала работы, а устойчивый рост — через месяц.</p>
-      </details>
-      <details>
-        <summary>Нужно ли предоставлять доступы к Яндекс.Картам?</summary>
-        <p>Да, для эффективной работы нам необходим доступ к вашему профилю на Яндекс.Картах или аккаунту Яндекс.Бизнеса.</p>
-      </details>
-      <details>
-        <summary>Какие гарантии вы даёте?</summary>
-        <p>Мы гарантируем повышение видимости и улучшение позиций, однако конечный результат зависит и от специфики вашего бизнеса.</p>
-      </details>
-      <details>
-        <summary>Можно ли продвигать несколько филиалов?</summary>
-        <p>Да, мы можем продвигать несколько филиалов вашей компании в разных регионах.</p>
-      </details>
-    </section>
-  </main>
+<section class="faq-section">
+  <h2>Часто задаваемые вопросы</h2>
+  <details>
+    <summary>Когда будут первые результаты?</summary>
+    <p>Обычно вы замечаете рост видимости и откликов в течение 1–2 недель после запуска работ.</p>
+  </details>
+  <details>
+    <summary>Вы работаете по всей России?</summary>
+    <p>Да, мы работаем с компаниями из любого региона РФ, все процессы дистанционные и налажены.</p>
+  </details>
+  <details>
+    <summary>Какие гарантии вы даёте?</summary>
+    <p>Гарантируем рост позиций и охвата. Условия прописываются в договоре.</p>
+  </details>
+  <details>
+    <summary>Что входит в продвижение?</summary>
+    <p>Аналитика, оптимизация карточки, работа с отзывами, реклама, отчёты по результатам.</p>
+  </details>
+</section>
 
 </body>
 </html>
