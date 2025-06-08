@@ -291,6 +291,8 @@
     font-weight: 600;
     cursor: pointer;
     position: relative;
+    padding-right: 40px;
+    line-height: 1.4;
   }
   .faq-toggle {
     position: absolute;
@@ -314,7 +316,7 @@
       const answer = this.nextElementSibling;
       const toggle = this.querySelector('.faq-toggle');
       const isOpen = this.classList.contains('open');
-      
+
       document.querySelectorAll('.faq-question').forEach(function(q) {
         q.classList.remove('open');
         q.nextElementSibling.style.display = 'none';
@@ -334,4 +336,3 @@
 <footer>
   <p>© 2025 Продвижение на Яндекс.Картах. Все права защищены.</p>
 </footer>
-
