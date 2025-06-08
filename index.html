@@ -234,7 +234,7 @@
   <div class="faq-item">
     <div class="faq-question">
       Сколько времени занимает вывод в ТОП на Яндекс.Картах?
-      <span class="faq-toggle">⌃</span>
+      <span class="faq-toggle">▽</span>
     </div>
     <div class="faq-answer">
       Обычно первые результаты видны уже через 2-4 недели, а стабильное попадание в ТОП достигается за 1-3 месяца, в зависимости от ниши и конкуренции.
@@ -243,7 +243,7 @@
   <div class="faq-item">
     <div class="faq-question">
       Нужно ли предоставлять доступ к аккаунту Яндекс?
-      <span class="faq-toggle">⌃</span>
+      <span class="faq-toggle">▽</span>
     </div>
     <div class="faq-answer">
       Да, для эффективной работы нам необходим доступ к вашей карточке на Яндекс.Картах и рекламному кабинету Яндекс.Директ.
@@ -252,7 +252,7 @@
   <div class="faq-item">
     <div class="faq-question">
       Можно ли продвигать бизнес в нескольких городах?
-      <span class="faq-toggle">⌃</span>
+      <span class="faq-toggle">▽</span>
     </div>
     <div class="faq-answer">
       Да, мы можем вести продвижение и рекламу в нескольких регионах, адаптируя стратегию под каждый город.
@@ -261,7 +261,7 @@
   <div class="faq-item">
     <div class="faq-question">
       Какие гарантии результата?
-      <span class="faq-toggle">⌃</span>
+      <span class="faq-toggle">▽</span>
     </div>
     <div class="faq-answer">
       Мы используем проверенные методы и индивидуальный подход, но гарантировать конкретные позиции невозможно из-за алгоритмов Яндекса. Мы гарантируем прозрачную работу и регулярную отчетность.
@@ -298,7 +298,6 @@
     top: 0;
     font-size: 24px;
     user-select: none;
-    transition: transform 0.3s ease;
     display: inline-block;
   }
   .faq-answer {
@@ -306,9 +305,6 @@
     font-size: 16px;
     margin-top: 10px;
     color: #444;
-  }
-  .open .faq-toggle {
-    transform: rotate(180deg);
   }
 </style>
 
@@ -322,13 +318,13 @@
       document.querySelectorAll('.faq-question').forEach(function(q) {
         q.classList.remove('open');
         q.nextElementSibling.style.display = 'none';
-        q.querySelector('.faq-toggle').textContent = '⌃';
+        q.querySelector('.faq-toggle').textContent = '▽';
       });
 
       if (!isOpen) {
         answer.style.display = 'block';
         this.classList.add('open');
-        toggle.textContent = '⌄';
+        toggle.textContent = '△';
       }
     });
   });
@@ -338,3 +334,4 @@
 <footer>
   <p>© 2025 Продвижение на Яндекс.Картах. Все права защищены.</p>
 </footer>
+
