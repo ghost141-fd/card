@@ -72,7 +72,7 @@ body, html {
   position: relative;
   height: 100vh;
   width: 100%;
-  background-image: url('stranica.png');
+  background-image: url('stranica.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -263,7 +263,7 @@ h2 {
   font-size: 1.1rem;
 }
 
-/* Секция кейсов */
+/* Секция кейсов - упрощенная версия без слайдера */
 .cases-section {
   padding: 60px 20px;
   background-color: #f5f5f5;
@@ -272,72 +272,35 @@ h2 {
 .cases-container {
   max-width: 1000px;
   margin: 0 auto;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.case-slide {
-  display: none;
-  text-align: center;
+.case-card {
+  background: white;
+  border-radius: 12px;
   padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.case-slide.active {
-  display: block;
-}
-
-.case-slide img {
+.case-card img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .case-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #1b2634;
 }
 
 .case-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
-}
-
-.slide-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.slide-nav button {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #333;
-  padding: 0 20px;
-}
-
-.slide-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.dot {
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: #27ae60;
 }
 
 /* Форма аудита */
@@ -445,7 +408,6 @@ footer {
     <div class="nav-links">
       <a href="#main">Главная</a>
       <a href="#cases">Кейсы</a>
-      <a href="#work">Как мы работаем</a>
       <a href="#faq">FAQ</a>
     </div>
   </div>
@@ -461,7 +423,7 @@ footer {
   
   <div class="hero-footer">
     <div class="hero-buttons">
-      <a href="https://t.me/YandexCartBot" target="_blank">Рассчитать стоимость</a>
+      <a href="#audit-form">Бесплатный аудит</a>
       <a href="https://wa.me/+79871577621" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
       </a>
@@ -529,52 +491,34 @@ footer {
     </div>
   </section>
 
-  <!-- Кейсы -->
+  <!-- Кейсы - упрощенная версия -->
   <section class="cases-section" id="cases">
     <h2>Наши кейсы</h2>
     
     <div class="cases-container">
-      <div class="case-slide active">
-        <img src="shinomontaz.png" alt="Кейс шиномонтажа">
+      <div class="case-card">
+        <img src="shinomontaz.jpg" alt="Кейс шиномонтажа" loading="lazy">
         <h3 class="case-title">Шиномонтаж</h3>
-        <p class="case-description">Потрачено <strong>7800р</strong>, получено <strong>73</strong> обращения по <strong>106р</strong> это статистика из рекламной подписки (см. на скриншоте выше).</p>
+        <p class="case-description">Потрачено <strong>7800р</strong>, получено <strong>73</strong> обращения по <strong>106р</strong> это статистика из рекламной подписки.</p>
       </div>
       
-      <div class="case-slide">
-        <img src="salon.png" alt="Кейс салона красоты">
+      <div class="case-card">
+        <img src="salon.jpg" alt="Кейс салона красоты" loading="lazy">
         <h3 class="case-title">Салон красоты</h3>
-        <p class="case-description">Потрачено <strong>15850р</strong>, получено целевых действий (звонки, построение маршрута до салона) <strong>425</strong>, цена действия <strong>37р</strong> это статистика из рекламной подписки (см. на скриншоте выше).</p>
+        <p class="case-description">Потрачено <strong>15850р</strong>, получено целевых действий (звонки, построение маршрута) <strong>425</strong>, цена действия <strong>37р</strong>.</p>
       </div>
       
-      <div class="case-slide">
-        <img src="notary.png" alt="Кейс нотариуса">
+      <div class="case-card">
+        <img src="notary.jpg" alt="Кейс нотариуса" loading="lazy">
         <h3 class="case-title">Нотариус</h3>
-        <p class="case-description">Чисто органический трафик за месяц, <strong>4410</strong> переходов на профиль компании, <strong>295</strong> проложено маршрутов, <strong>419</strong> звонков, <strong>34</strong> перехода на сайт (см. на скриншоте выше).</p>
-      </div>
-      
-      <div class="case-slide">
-        <img src="autoservis.png" alt="Кейс автосервиса">
-        <h3 class="case-title">Автосервис</h3>
-        <p class="case-description">Потрачено <strong>9000р</strong>, получено <strong>152</strong> обращения, по <strong>59р</strong> это статистика из рекламной подписки (см. на скриншоте выше).</p>
-      </div>
-      
-      <div class="slide-nav">
-        <button class="prev-btn">❮</button>
-        <button class="next-btn">❯</button>
-      </div>
-      
-      <div class="slide-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <p class="case-description">Чисто органический трафик за месяц: <strong>4410</strong> переходов, <strong>295</strong> маршрутов, <strong>419</strong> звонков, <strong>34</strong> перехода на сайт.</p>
       </div>
     </div>
   </section>
 </main>
 
 <!-- Форма аудита -->
-<section class="audit-form-section">
+<section class="audit-form-section" id="audit-form">
   <div class="audit-form-container">
     <h2>Записаться на бесплатный аудит карточки организации</h2>
     
@@ -689,34 +633,6 @@ document.getElementById('auditForm').addEventListener('submit', async (e) => {
     message.style.color = 'white';
     message.textContent = 'Ошибка сети или сервера';
   }
-});
-
-// Слайдер кейсов
-let currentSlide = 0;
-const slides = document.querySelectorAll('.case-slide');
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(n) {
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-  
-  currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-document.querySelector('.prev-btn').addEventListener('click', () => {
-  showSlide(currentSlide - 1);
-});
-
-document.querySelector('.next-btn').addEventListener('click', () => {
-  showSlide(currentSlide + 1);
-});
-
-dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    showSlide(index);
-  });
 });
 
 // Плавная прокрутка для навигации
