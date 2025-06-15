@@ -53,6 +53,13 @@
       z-index: 1;
     }
       
+     .hero-buttons {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 20px;
+    }
+     
       .hero-subheader {
   font-size: 1.8rem;
   font-weight: 400;
@@ -62,21 +69,7 @@
   user-select: none;
   opacity: 0.9;
    }
-    
-    }
-        
-    .hero-subheader {
-     font-size: clamp(18px, 3vw, 24px);
-     margin-bottom: 30px;
-    }
-   
-    .hero-buttons {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      gap: 20px;
-    }
-
+  
     .hero-buttons a {
       background-color: rgba(39,174,96, 0.85);
       color: white;
@@ -121,6 +114,23 @@
         font-size: 2.5rem;
         max-width: 90vw;
       }
+    
+      .hero-buttons a {
+      background-color: rgba(39,174,96, 0.85);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 5px 15px rgba(39,174,96,0.6);
+      transition: background-color 0.3s ease, transform 0.25s ease;
+      user-select: none;
+    }
+      
       .hero-buttons {
         flex-direction: column;
         gap: 14px;
