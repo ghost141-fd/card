@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Продвижение в Яндекс.Картах | Вывод в ТОП-1</title>
     <meta name="description" content="Профессиональное продвижение бизнеса в Яндекс.Картах. Белые методы. Результат за 14 дней.">
+    <link rel="icon" href="maps.svg" type="image/svg+xml">
     
     <style>
         /* Основные стили */
@@ -15,7 +16,7 @@
         }
         
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
             background: #fff;
@@ -36,7 +37,7 @@
         
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
         
         .nav-links a {
@@ -44,23 +45,17 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 16px;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #27ae60;
         }
         
         /* Герой-секция */
         .hero {
             min-height: 100vh;
             padding: 120px 20px 60px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('stranica.jpg') center/cover no-repeat;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: left;
         }
         
         .hero-content {
@@ -78,7 +73,6 @@
         .hero-subheader {
             font-size: clamp(18px, 3vw, 24px);
             margin-bottom: 30px;
-            font-weight: 600;
         }
         
         .hero-buttons {
@@ -96,15 +90,11 @@
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
         }
         
         .btn:hover {
             background: #2ecc71;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
         }
         
         /* Секции */
@@ -139,7 +129,6 @@
         .reasons-list h3 {
             font-size: 20px;
             margin-bottom: 20px;
-            color: #2c3e50;
         }
         
         .reasons-list ul {
@@ -148,7 +137,6 @@
         
         .reasons-list li {
             margin-bottom: 12px;
-            font-size: 16px;
         }
         
         /* Как мы работаем */
@@ -164,17 +152,11 @@
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        
-        .step:hover {
-            transform: translateY(-5px);
         }
         
         .step h3 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: #2c3e50;
         }
         
         /* Кейсы */
@@ -200,6 +182,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            display: block;
         }
         
         .case-content {
@@ -209,7 +192,6 @@
         .case-title {
             font-size: 20px;
             margin-bottom: 10px;
-            color: #2c3e50;
         }
         
         /* Форма */
@@ -228,7 +210,6 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .form-group {
@@ -253,10 +234,12 @@
         #submitBtn {
             width: 100%;
             background: #2c3e50;
-        }
-        
-        #submitBtn:hover {
-            background: #34495e;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
         }
         
         #message {
@@ -275,36 +258,26 @@
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
         .faq-question {
             padding: 20px;
             font-weight: 600;
-            font-size: 18px;
             cursor: pointer;
             position: relative;
-            background: white;
         }
         
         .faq-question::after {
             content: '+';
             position: absolute;
             right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-        }
-        
-        .faq-question.active::after {
-            content: '-';
         }
         
         .faq-answer {
             padding: 0 20px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s;
         }
         
         .faq-answer.show {
@@ -312,28 +285,11 @@
             max-height: 500px;
         }
         
-        /* Футер */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 14px;
-        }
-        
         /* Адаптив */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 15px;
-            }
-            
             .hero {
                 padding: 100px 20px 40px;
                 text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
             }
             
             .section {
@@ -389,37 +345,37 @@
     <!-- Как мы работаем -->
     <section class="section" id="work">
         <h2 class="section-title">Как мы работаем</h2>
-        <p style="text-align: center; margin-bottom: 30px; font-size: 18px;">Пошаговая система продвижения в ТОП:</p>
+        <p style="text-align: center; margin-bottom: 30px;">Пошаговая система продвижения в ТОП:</p>
         
         <div class="steps">
             <div class="step">
                 <h3>🔍 Анализ карточки и конкурентов</h3>
-                <p>Проводим полный аудит вашей карточки и анализируем конкурентов, чтобы определить оптимальную стратегию продвижения.</p>
+                <p>Проводим полный аудит вашей карточки и анализируем конкурентов.</p>
             </div>
             
             <div class="step">
                 <h3>🔑 Сбор ключей + семантика</h3>
-                <p>Подбираем релевантные поисковые запросы и ключевые слова, которые помогут вашей карточке появляться в результатах поиска.</p>
+                <p>Подбираем релевантные поисковые запросы и ключевые слова.</p>
             </div>
             
             <div class="step">
                 <h3>✍️ Оптимизация описания</h3>
-                <p>Оптимизируем текстовое содержание карточки, заголовок и категории для максимальной релевантности поисковым запросам.</p>
+                <p>Оптимизируем текстовое содержание карточки для поисковых запросов.</p>
             </div>
             
             <div class="step">
                 <h3>📷 Добавление фото и постов</h3>
-                <p>Загружаем качественные фотографии и регулярно публикуем обновления, чтобы повысить доверие пользователей и Яндекса.</p>
+                <p>Загружаем качественные фотографии и публикуем обновления.</p>
             </div>
             
             <div class="step">
                 <h3>💬 Работа с отзывами</h3>
-                <p>Стимулируем получение положительных отзывов и повышаем вовлеченность пользователей с вашей карточкой.</p>
+                <p>Стимулируем получение положительных отзывов.</p>
             </div>
             
             <div class="step">
                 <h3>📈 Отчёты и удержание</h3>
-                <p>Предоставляем регулярные отчеты о результатах и продолжаем работу по удержанию и улучшению позиций.</p>
+                <p>Предоставляем регулярные отчеты о результатах.</p>
             </div>
         </div>
     </section>
@@ -467,10 +423,10 @@
             
             <div class="form-group">
                 <label for="phone">Телефон:</label>
-                <input type="tel" id="phone" pattern="^\+?\d{10,15}$" required placeholder="+79991234567">
+                <input type="tel" id="phone" required placeholder="+79991234567">
             </div>
             
-            <button type="submit" class="btn" id="submitBtn" disabled>Отправить</button>
+            <button type="submit" id="submitBtn" disabled>Отправить</button>
             <p id="message"></p>
         </form>
     </section>
@@ -510,7 +466,7 @@
 
     <!-- Футер -->
     <footer>
-        <p>© 2025 Продвижение на Яндекс.Картах. Все права защищены.</p>
+        <p>© 2025 Продвижение на Яндекс.Картах</p>
     </footer>
 
     <script>
@@ -521,9 +477,8 @@
         const message = document.getElementById('message');
         
         function validateForm() {
-            const nameValid = nameInput.value.trim().length > 0;
-            const phoneValid = /^\+?\d{10,15}$/.test(phoneInput.value.trim());
-            submitBtn.disabled = !(nameValid && phoneValid);
+            const isValid = nameInput.value.trim() !== '' && phoneInput.value.trim() !== '';
+            submitBtn.disabled = !isValid;
         }
         
         nameInput.addEventListener('input', validateForm);
@@ -535,11 +490,6 @@
             message.style.color = '#27ae60';
             this.reset();
             submitBtn.disabled = true;
-            
-            // Прокрутка к сообщению
-            setTimeout(() => {
-                message.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
         });
         
         // FAQ аккордеон
@@ -548,19 +498,15 @@
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
+                const isActive = answer.classList.contains('show');
                 
                 // Закрываем все ответы
                 document.querySelectorAll('.faq-answer').forEach(ans => {
                     ans.classList.remove('show');
                 });
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.classList.remove('active');
-                });
                 
                 // Открываем текущий, если был закрыт
                 if (!isActive) {
-                    question.classList.add('active');
                     answer.classList.add('show');
                 }
             });
@@ -581,27 +527,6 @@
                     });
                 }
             });
-        });
-        
-        // Загрузка изображений
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.getAttribute('src');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-                
-                images.forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
         });
     </script>
 </body>
