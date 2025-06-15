@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Продвижение на Яндекс.Картах и настройка рекламы</title>
-<meta name="description" content="Профессиональное продвижение на Яндекс.Картах. Настройка рекламы. Вывод в ТОП 1 среди конкурентов. Работаем по всей России." />
-<meta name="keywords" content="продвижение на яндекс картах, продвижение компании в яндекс, яндекс карты реклама, настройка рекламы в яндекс, продвижение бизнеса, геосервисы яндекс" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Продвижение на Яндекс.Картах</title>
+<meta name="description" content="Профессиональное продвижение на Яндекс.Картах. Вывод в ТОП-1. Белые методы. Работаем по всей России.">
 
-<!-- Основная SVG-иконка (modern browsers) -->
-<link rel="icon" href="maps.svg" type="image/svg+xml">
-<!-- Альтернативные иконки для старых браузеров -->
-<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Для Safari (опционально) -->
-<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-
-<!-- Шрифты -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Предзагрузка шрифтов -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"></noscript>
 
 <style>
+/* Минимальные критические стили */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body, html {
-  margin: 0; padding: 0; height: 100%;
+body {
   font-family: 'Montserrat', sans-serif;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Навигация */
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  background-color: white;
+  background: white;
   padding: 15px 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
@@ -43,397 +36,87 @@ body, html {
   justify-content: center;
 }
 
-.nav-container {
-  display: flex;
-  max-width: 1100px;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 20px;
 }
 
 .nav-links a {
   color: #333;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #27ae60;
 }
 
 .hero {
-  position: relative;
   height: 100vh;
-  width: 100%;
-  background-image: url('stranica.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #2c3e50;
+  color: white;
+  padding: 100px 20px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 40px;
-  color: white;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%);
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  margin-top: 80px;
 }
 
 .hero-header {
-  font-size: 3.8rem;
+  font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 700;
-  max-width: 700px;
-  margin: 0;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-  user-select: none;
+  margin-bottom: 20px;
 }
 
 .hero-subheader {
-  font-size: 1.8rem;
-  font-weight: 600;
-  max-width: 700px;
-  margin: 20px 0 0 0;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-  user-select: none;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: 30px;
 }
 
 .hero-buttons {
-  position: relative;
-  z-index: 1;
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .hero-buttons a {
-  background-color: rgba(39,174,96, 0.85);
+  background: #27ae60;
   color: white;
-  padding: 14px 30px;
+  padding: 12px 25px;
   border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.2rem;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 5px 15px rgba(39,174,96,0.6);
-  transition: background-color 0.3s ease, transform 0.25s ease;
-  user-select: none;
-}
-
-.hero-buttons a:hover {
-  background-color: rgba(27,120,67, 0.95);
-  transform: scale(1.05);
-}
-
-.icon {
-  width: 22px;
-  height: 22px;
-  filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
-}
-
-.hero-footer {
-  display: flex;
-  justify-content: flex-start;
-  padding-bottom: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 15px;
-  }
-  
-  .nav-links {
-    gap: 15px;
-  }
-  
-  .hero {
-    padding: 20px 20px;
-    justify-content: space-between;
-  }
-  
-  .hero-header {
-    font-size: 2.5rem;
-    max-width: 90vw;
-  }
-  
-  .hero-subheader {
-    font-size: 1.3rem;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    gap: 14px;
-  }
-  
-  .hero-buttons a {
-    font-size: 1.1rem;
-    padding: 12px 25px;
-    min-width: 180px;
-    justify-content: center;
-  }
-  
-  .icon {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-main {
-  max-width: 1100px;
-  margin: 60px auto 80px auto;
-  padding: 0 20px;
-  color: #333;
-}
-
-section {
-  margin-bottom: 60px;
-}
-
-h2 {
   font-weight: 700;
-  font-size: 2.6rem;
-  margin-bottom: 30px;
-  color: #1b2634;
-  text-align: center;
 }
 
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.tile {
-  background: #f4f4f4;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Секция "Почему ты не в ТОПе" */
-.top-reasons {
-  background-color: #f9f9f9;
-  padding: 60px 20px;
-  margin: 40px 0;
-}
-
-.top-reasons h2 {
-  margin-bottom: 40px;
-}
-
-.reasons-list {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.reasons-list > div {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-.reasons-list ul {
-  padding-left: 20px;
-}
-
-.reasons-list li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-/* Секция кейсов - упрощенная версия без слайдера */
-.cases-section {
-  padding: 60px 20px;
-  background-color: #f5f5f5;
-}
-
-.cases-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.case-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.case-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.case-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #1b2634;
-}
-
-.case-description {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Форма аудита */
-.audit-form-section {
-  background-color: #27ae60;
-  padding: 60px 20px;
-  color: white;
-}
-
-.audit-form-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.audit-form-container h2 {
-  color: white;
-  margin-bottom: 30px;
-}
-
-#auditForm {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-#auditForm label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-#auditForm input {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 8px;
-  border: none;
-  font-size: 1rem;
-}
-
-#auditForm button {
-  background-color: #1b2634;
-  color: white;
-  border: none;
-  padding: 15px 25px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#auditForm button:hover {
-  background-color: #2c3e50;
-}
-
-#auditForm button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-#message {
-  margin-top: 15px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.faq-section {
-  background-color: #f9f9f9;
-  padding: 60px 20px;
-  color: #222;
-}
-
-.faq-section h2 {
-  color: #1b2634;
-}
-
-.faq-section details {
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-.faq-section summary {
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  background-color: #111;
-  color: #aaa;
-  font-size: 0.95rem;
-}
+/* Остальные стили будут загружены асинхронно */
 </style>
+
+<!-- Асинхронная загрузка остальных стилей -->
+<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
 </head>
 
 <body>
 <!-- Навигация -->
 <nav class="navbar">
-  <div class="nav-container">
-    <div class="nav-links">
-      <a href="#main">Главная</a>
-      <a href="#cases">Кейсы</a>
-      <a href="#faq">FAQ</a>
-    </div>
+  <div class="nav-links">
+    <a href="#main">Главная</a>
+    <a href="#cases">Кейсы</a>
+    <a href="#faq">FAQ</a>
   </div>
 </nav>
 
 <!-- Главный экран -->
 <section class="hero" id="main">
-  <div class="hero-content">
+  <div>
     <h1 class="hero-header">Ты есть в Яндекс.Картах, но тебя никто не видит?</h1>
     <h2 class="hero-subheader">Продвигаем бизнес в ТОП-1 без серых схем и блокировок</h2>
     <p class="hero-subheader">Увеличим видимость, рейтинг и поток клиентов за 14 дней<br>Только белые методы. Отчёт каждую неделю. Безопасно для бизнеса.</p>
   </div>
   
-  <div class="hero-footer">
-    <div class="hero-buttons">
-      <a href="#audit-form">Бесплатный аудит</a>
-      <a href="https://wa.me/+79871577621" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon" />Написать
-      </a>
-      <a href="https://t.me/Goust_141OTG" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon" />Написать
-      </a>
-    </div>
+  <div class="hero-buttons">
+    <a href="#audit-form">Бесплатный аудит</a>
+    <a href="https://wa.me/+79871577621" target="_blank">Написать в WhatsApp</a>
+    <a href="https://t.me/Goust_141OTG" target="_blank">Написать в Telegram</a>
   </div>
 </section>
 
+<!-- Основное содержимое -->
 <main>
   <!-- Почему ты не в ТОПе -->
   <section class="top-reasons" id="why-not-top">
@@ -456,62 +139,62 @@ footer {
   <!-- Как мы работаем -->
   <section id="work">
     <h2>Как мы работаем</h2>
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">Пошаговая система продвижения в ТОП:</p>
+    <p style="text-align: center; margin-bottom: 30px;">Пошаговая система продвижения в ТОП:</p>
     
     <div class="tiles">
       <div class="tile">
         <h3>🔍 Анализ карточки и конкурентов</h3>
-        <p>Проводим полный аудит вашей карточки и анализируем конкурентов, чтобы определить оптимальную стратегию продвижения.</p>
+        <p>Проводим полный аудит вашей карточки и анализируем конкурентов.</p>
       </div>
       
       <div class="tile">
         <h3>🔑 Сбор ключей + семантика</h3>
-        <p>Подбираем релевантные поисковые запросы и ключевые слова, которые помогут вашей карточке появляться в результатах поиска.</p>
+        <p>Подбираем релевантные поисковые запросы и ключевые слова.</p>
       </div>
       
       <div class="tile">
-        <h3>✍️ Оптимизация описания, заголовка и рубрик</h3>
-        <p>Оптимизируем текстовое содержание карточки, заголовок и категории для максимальной релевантности поисковым запросам.</p>
+        <h3>✍️ Оптимизация описания</h3>
+        <p>Оптимизируем текстовое содержание карточки для поисковых запросов.</p>
       </div>
       
       <div class="tile">
-        <h3>📷 Добавление актуальных фото и постов</h3>
-        <p>Загружаем качественные фотографии и регулярно публикуем обновления, чтобы повысить доверие пользователей и Яндекса.</p>
+        <h3>📷 Добавление фото и постов</h3>
+        <p>Загружаем качественные фотографии и публикуем обновления.</p>
       </div>
       
       <div class="tile">
-        <h3>💬 Работа с отзывами и вовлечением</h3>
-        <p>Стимулируем получение положительных отзывов и повышаем вовлеченность пользователей с вашей карточкой.</p>
+        <h3>💬 Работа с отзывами</h3>
+        <p>Стимулируем получение положительных отзывов.</p>
       </div>
       
       <div class="tile">
-        <h3>📈 Отчёты и удержание позиций</h3>
-        <p>Предоставляем регулярные отчеты о результатах и продолжаем работу по удержанию и улучшению позиций.</p>
+        <h3>📈 Отчёты и удержание</h3>
+        <p>Предоставляем регулярные отчеты о результатах.</p>
       </div>
     </div>
   </section>
 
-  <!-- Кейсы - упрощенная версия -->
+  <!-- Кейсы -->
   <section class="cases-section" id="cases">
     <h2>Наши кейсы</h2>
     
     <div class="cases-container">
       <div class="case-card">
-        <img src="shinomontaz.jpg" alt="Кейс шиномонтажа" loading="lazy">
-        <h3 class="case-title">Шиномонтаж</h3>
-        <p class="case-description">Потрачено <strong>7800р</strong>, получено <strong>73</strong> обращения по <strong>106р</strong> это статистика из рекламной подписки.</p>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f0f0f0'/%3E%3Ctext x='150' y='100' font-family='Arial' font-size='16' text-anchor='middle' fill='%23666'%3EШиномонтаж%3C/text%3E%3C/svg%3E" data-src="shinomontaz.jpg" alt="Кейс шиномонтажа" loading="lazy" class="lazy-img">
+        <h3>Шиномонтаж</h3>
+        <p>Потрачено <strong>7800р</strong>, получено <strong>73</strong> обращения по <strong>106р</strong>.</p>
       </div>
       
       <div class="case-card">
-        <img src="salon.jpg" alt="Кейс салона красоты" loading="lazy">
-        <h3 class="case-title">Салон красоты</h3>
-        <p class="case-description">Потрачено <strong>15850р</strong>, получено целевых действий (звонки, построение маршрута) <strong>425</strong>, цена действия <strong>37р</strong>.</p>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f0f0f0'/%3E%3Ctext x='150' y='100' font-family='Arial' font-size='16' text-anchor='middle' fill='%23666'%3EСалон красоты%3C/text%3E%3C/svg%3E" data-src="salon.jpg" alt="Кейс салона красоты" loading="lazy" class="lazy-img">
+        <h3>Салон красоты</h3>
+        <p>Потрачено <strong>15850р</strong>, получено <strong>425</strong> действий по <strong>37р</strong>.</p>
       </div>
       
       <div class="case-card">
-        <img src="notary.jpg" alt="Кейс нотариуса" loading="lazy">
-        <h3 class="case-title">Нотариус</h3>
-        <p class="case-description">Чисто органический трафик за месяц: <strong>4410</strong> переходов, <strong>295</strong> маршрутов, <strong>419</strong> звонков, <strong>34</strong> перехода на сайт.</p>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f0f0f0'/%3E%3Ctext x='150' y='100' font-family='Arial' font-size='16' text-anchor='middle' fill='%23666'%3EНотариус%3C/text%3E%3C/svg%3E" data-src="notary.jpg" alt="Кейс нотариуса" loading="lazy" class="lazy-img">
+        <h3>Нотариус</h3>
+        <p><strong>4410</strong> переходов, <strong>295</strong> маршрутов, <strong>419</strong> звонков.</p>
       </div>
     </div>
   </section>
@@ -520,23 +203,22 @@ footer {
 <!-- Форма аудита -->
 <section class="audit-form-section" id="audit-form">
   <div class="audit-form-container">
-    <h2>Записаться на бесплатный аудит карточки организации</h2>
+    <h2>Записаться на бесплатный аудит</h2>
     
     <form id="auditForm">
       <label>
         Имя:
-        <input type="text" id="name" required />
+        <input type="text" id="name" required>
       </label>
       
       <label>
         Телефон:
-        <input type="tel" id="phone" pattern="^\+?\d{10,15}$" required placeholder="+79991234567" />
+        <input type="tel" id="phone" pattern="^\+?\d{10,15}$" required placeholder="+79991234567">
       </label>
       
       <button type="submit" id="submitBtn" disabled>Отправить</button>
+      <p id="message"></p>
     </form>
-    
-    <p id="message" style="color: white;"></p>
   </div>
 </section>
 
@@ -545,49 +227,55 @@ footer {
   <h2>Часто задаваемые вопросы</h2>
   
   <details>
-    <summary>Сколько времени занимает вывод в ТОП на Яндекс.Картах?</summary>
-    <p>Обычно первые результаты видны уже через 2-4 недели, а стабильное попадание в ТОП достигается за 1-3 месяца, в зависимости от ниши и конкуренции.</p>
+    <summary>Сколько времени занимает вывод в ТОП?</summary>
+    <p>Первые результаты через 2-4 недели, стабильный ТОП за 1-3 месяца.</p>
   </details>
   
   <details>
-    <summary>Нужно ли предоставлять доступ к аккаунту Яндекс?</summary>
-    <p>Да, для эффективной работы нам необходим доступ к вашей карточке на Яндекс.Картах и рекламному кабинету Яндекс.Директ.</p>
+    <summary>Нужен ли доступ к аккаунту Яндекс?</summary>
+    <p>Да, необходим доступ к карточке и Яндекс.Директ.</p>
   </details>
   
   <details>
-    <summary>Можно ли продвигать бизнес в нескольких городах?</summary>
-    <p>Да, мы можем вести продвижение и рекламу в нескольких регионах, адаптируя стратегию под каждый город.</p>
+    <summary>Можно ли продвигать в нескольких городах?</summary>
+    <p>Да, работаем с несколькими регионами.</p>
   </details>
   
   <details>
     <summary>Какие гарантии результата?</summary>
-    <p>Мы используем проверенные методы и индивидуальный подход, но гарантировать конкретные позиции невозможно из-за алгоритмов Яндекса. Мы гарантируем прозрачную работу и регулярную отчетность.</p>
+    <p>Гарантируем прозрачную работу и отчетность.</p>
   </details>
 </section>
 
 <footer>
-  <p>© 2025 Продвижение на Яндекс.Картах. Все права защищены.</p>
+  <p>© 2025 Продвижение на Яндекс.Картах</p>
 </footer>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();
-  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-  ym(102487117, "init", {
-       clickmap:true,
-       trackLinks:true,
-       accurateTrackBounce:true
-  });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/102487117" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
+<!-- Минимальный JavaScript -->
 <script>
-// Валидация формы аудита
+// Ленивая загрузка изображений
+document.addEventListener("DOMContentLoaded", function() {
+  const lazyImages = [].slice.call(document.querySelectorAll("img.lazy-img"));
+  
+  if ("IntersectionObserver" in window) {
+    const lazyImageObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove("lazy-img");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});
+
+// Валидация формы
 const nameInput = document.getElementById('name');
 const phoneInput = document.getElementById('phone');
 const submitBtn = document.getElementById('submitBtn');
@@ -597,61 +285,34 @@ function validate() {
   const nameValid = nameInput.value.trim().length > 0;
   const phoneValid = /^\+?\d{10,15}$/.test(phoneInput.value.trim());
   submitBtn.disabled = !(nameValid && phoneValid);
-  message.textContent = '';
 }
 
 nameInput.addEventListener('input', validate);
 phoneInput.addEventListener('input', validate);
 
-document.getElementById('auditForm').addEventListener('submit', async (e) => {
+document.getElementById('auditForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  
-  const data = {
-    name: nameInput.value.trim(),
-    phone: phoneInput.value.trim(),
-  };
-  
-  try {
-    const response = await fetch('https://064b10a2-ac07-4e20-8220-d6ee5ac199a5-00-sq9e9ydyh6fa.worf.replit.dev/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    
-    if (response.ok) {
-      message.style.color = 'white';
-      message.textContent = 'Заявка успешно отправлена!';
-      nameInput.value = '';
-      phoneInput.value = '';
-      submitBtn.disabled = true;
-    } else {
-      const result = await response.json();
-      message.style.color = 'white';
-      message.textContent = result.error || 'Ошибка при отправке заявки';
-    }
-  } catch (err) {
-    message.style.color = 'white';
-    message.textContent = 'Ошибка сети или сервера';
-  }
+  message.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+  this.reset();
+  submitBtn.disabled = true;
 });
 
-// Плавная прокрутка для навигации
+// Плавная прокрутка
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
-    
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
       window.scrollTo({
-        top: targetElement.offsetTop - 80,
+        top: target.offsetTop - 80,
         behavior: 'smooth'
       });
     }
   });
 });
 </script>
+
+<!-- Yandex.Metrika -->
+<noscript><div><img src="https://mc.yandex.ru/watch/102487117" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 </body>
 </html>
