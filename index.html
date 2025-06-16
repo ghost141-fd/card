@@ -291,6 +291,66 @@
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    form#audit-form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: sans-serif;
+  }
+
+  form#audit-form h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  form#audit-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  form#audit-form input[type="text"],
+  form#audit-form input[type="tel"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  form#audit-form input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  form#audit-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  form#audit-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  form#audit-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
 
     .faq-section {
       background-color: #f9f9f9;
@@ -435,8 +495,46 @@
     </section>
   
 </main>
+</script>
+<form action="https://submit-form.com/form_v1_W2DkrYixj5QadqK1fd0md7mM" method="POST" id="audit-form">
+  <h2>Оставить заявку на бесплатный аудит</h2>
 
-<section id="faq" class="faq-section">
+  <label>
+    Ваше имя:
+    <input type="text" name="name" placeholder="Иван" id="name-input" required>
+  </label>
+
+  <label>
+    Телефон:
+    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
+  </label>
+
+  <label class="checkbox-group">
+    <input type="checkbox" id="agree-checkbox" required>
+    Согласен с обработкой персональных данных
+  </label>
+
+  <button type="submit" id="submit-button" disabled>Отправить заявку</button>
+</form>
+
+<script>
+  const nameInput = document.getElementById("name-input");
+  const phoneInput = document.getElementById("phone-input");
+  const checkbox = document.getElementById("agree-checkbox");
+  const submitButton = document.getElementById("submit-button");
+
+  function validateForm() {
+    const nameValid = nameInput.value.trim().length > 1;
+    const phoneValid = phoneInput.value.trim().length > 5;
+    const checkboxChecked = checkbox.checked;
+    submitButton.disabled = !(nameValid && phoneValid && checkboxChecked);
+  }
+
+  nameInput.addEventListener("input", validateForm);
+  phoneInput.addEventListener("input", validateForm);
+  checkbox.addEventListener("change", validateForm);
+</script>
+  <section id="faq" class="faq-section">
   <h2>Часто задаваемые вопросы</h2>
   <div class="faq-item">
     <div class="faq-question">
