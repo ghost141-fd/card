@@ -54,23 +54,26 @@
     }
 
     .hero-header {
-      font-size: 3.8rem;
-      font-weight: 700;
-      max-width: 700px;
-      margin: 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      user-select: none;
-    }
+     font-size: 3.8rem;
+     font-weight: 700;
+     max-width: 700px;
+     margin: 0;
+     color: white;
+     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+     user-select: none;
+     line-height: 1.2;
+}
 
-    .hero-subheader {
-    font-size: 2.8rem;  /* Меньше, чем у заголовка */
-    font-weight: 400;   /* Не жирный */
-    max-width: 90vw;
-    margin: 0.5rem 0 0 0;  /* Отступ сверху */
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);  /* Меньше тень */
+   .hero-subheader {
+    font-size: 2.2rem;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 1rem 0 0 0;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     user-select: none;
-    opacity: 0.9;  /* Лёгкая прозрачность */
-    }  
+    line-height: 1.3;
+}
     
     .hero-buttons {
       position: relative;
@@ -119,13 +122,15 @@
         padding: 20px 20px;
         justify-content: space-between;
       }
-      .hero-header {
-        font-size: 2.5rem;
-        max-width: 90vw;
+     .hero-header {
+       font-size: 2.5rem;
+       max-width: 90vw;
       }
-      .hero-subheader {
-        font-size: 2.5rem;
-        max-width: 90vw;
+     .hero-subheader {
+       font-size: 1.6rem; /* Уменьшенный размер для мобильных */
+       max-width: 90vw;
+       margin-top: 0.8rem;
+       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       }
       .hero-buttons {
         flex-direction: column;
@@ -316,7 +321,7 @@
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-header">Продвижение на Яндекс.Картах и настройка рекламы</h1>
-    <h2 class="hero-subheader">Продвигаем бизнес в ТОП-1 без серых схем и блокировок</h2>
+    <h2 class="hero-subheader">Ваши клиенты уже ищут вас на картах прямо сейчас... Но находят кого-то другого. Давайте это исправим?</h2>
   </div>
   <div class="hero-footer">
     <div class="hero-buttons">
