@@ -554,24 +554,6 @@
       alert("Сетевая ошибка. Проверьте интернет.");
     });
   });
-</section>
-
-<script>
-  const nameInput = document.getElementById("name-input");
-  const phoneInput = document.getElementById("phone-input");
-  const checkbox = document.getElementById("agree-checkbox");
-  const submitButton = document.getElementById("submit-button");
-
-  function validateForm() {
-    const nameValid = nameInput.value.trim().length > 1;
-    const phoneValid = phoneInput.value.trim().length > 5;
-    const checkboxChecked = checkbox.checked;
-    submitButton.disabled = !(nameValid && phoneValid && checkboxChecked);
-  }
-
-  nameInput.addEventListener("input", validateForm);
-  phoneInput.addEventListener("input", validateForm);
-  checkbox.addEventListener("change", validateForm);
 </script>
   <section id="faq" class="faq-section">
   <h2>Часто задаваемые вопросы</h2>
