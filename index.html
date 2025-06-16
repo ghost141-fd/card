@@ -542,27 +542,13 @@ form.addEventListener('submit', event => {
     body: formData,
     headers: { 'Accept': 'application/json' }
   })
-  .then(response => {
+  .then(async response => {
     console.log('Response status:', response.status);
+    const text = await response.text();
+    console.log('Response text:', text);
 
-    // Попробуем прочитать тело как JSON, но если ошибка — вернём null
-    return response.text().then(text => {
-      try {
-        return JSON.parse(text);
-      } catch {
-        return null;
-      }
-    });
-  })
-  .then(data => {
-    console.log('Response data:', data);
-
-    // Если есть data и data.success == true — считаем успешной отправкой
-    if (data && data.success) {
-      form.style.display = 'none';
-      successMessage.style.display = 'block';
-    } else if (data === null) {
-      // Если JSON не пришёл, просто покажем благодарность
+    if (response.ok) {
+      // Если статус 200-299 — считаем успешно
       form.style.display = 'none';
       successMessage.style.display = 'block';
     } else {
