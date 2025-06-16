@@ -314,66 +314,6 @@
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-  #audit-form {
-    max-width: 400px;
-    margin: 30px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    font-family: sans-serif;
-  }
-
-  #audit-form h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
-    text-align: center;
-  }
-
-  #audit-form label {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #333;
-  }
-
-  #audit-form input[type="text"],
-  #audit-form input[type="tel"] {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-
-  #audit-form input[type="checkbox"] {
-    margin-right: 8px;
-  }
-
-  #audit-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  #audit-form button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 13px;
-  }
 
   #success-message {
     display: none;
@@ -557,7 +497,7 @@
 
 <section id="audit-section">
   <div id="form-container">
-    <form id="audit-form" action="https://submit-form.com/SLXHiAaGr" method="POST">
+    <form id="auditForm" action="https://submit-form.com/SLXHiAaGr" method="POST">
       <h2>Оставить заявку на бесплатный аудит</h2>
 
       <label>
@@ -589,7 +529,7 @@
 </section>
 
 <script>
-  const form = document.getElementById("audit-form");
+  const form = document.getElementById("auditForm");
   const successMessage = document.getElementById("success-message");
 
   form.addEventListener("submit", function(event) {
@@ -615,6 +555,71 @@
     });
   });
 </script>
+
+<style>
+  #audit-section {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: sans-serif;
+  }
+
+  #audit-section h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  #audit-section label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  #audit-section input[type="text"],
+  #audit-section input[type="tel"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  #audit-section input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  #audit-section button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #audit-section button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  #success-message {
+    display: none;
+    text-align: center;
+    font-size: 16px;
+    color: #28a745;
+    padding: 20px;
+  }
+</style>
+
   
 </script>
   <section id="faq" class="faq-section">
