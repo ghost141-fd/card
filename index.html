@@ -382,30 +382,57 @@
     color: #28a745; /* зелёный цвет */
     padding: 20px;
   }
+
     .contacts-section {
   padding: 60px 40px;
-  background-color: #f9f9f9;
-  color: #222;
+  background-color: #111; /* Тёмный фон под стиль hero */
+  color: white;
+  text-align: center;
 }
 
 .contacts-title {
-  font-size: 2.4rem;
-  margin-bottom: 20px;
+  font-size: 2.6rem;
   font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
 }
 
-.contacts-list p {
+.contacts-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px 30px;
+  width: 280px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+
+.contact-type {
   font-size: 1.2rem;
-  margin: 12px 0;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #aaa;
 }
 
-.contacts-list a {
+.contact-link {
+  font-size: 1.3rem;
   color: #27ae60;
   text-decoration: none;
-  font-weight: 600;
+  word-break: break-word;
 }
 
-.contacts-list a:hover {
+.contact-link:hover {
   text-decoration: underline;
 }
   </style>
@@ -598,19 +625,19 @@
 
 <section id="contacts" class="contacts-section">
   <h2 class="contacts-title">Контакты</h2>
-  <div class="contacts-list">
-    <p>
-      📞 Телефон: 
-      <a href="tel:+79871577621">+7 (987) 157-76-21</a>
-    </p>
-    <p>
-      💬 WhatsApp: 
-      <a href="https://wa.me/+79871577621" target="_blank">Написать в WhatsApp</a>
-    </p>
-    <p>
-      ✈️ Telegram: 
-      <a href="https://t.me/Goust_141OTG" target="_blank">Написать в Telegram</a>
-    </p>
+  <div class="contacts-cards">
+    <div class="contact-card">
+      <p class="contact-type">Телефон</p>
+      <a href="tel:+79871577621" class="contact-link">+7 (987) 157-76-21</a>
+    </div>
+    <div class="contact-card">
+      <p class="contact-type">WhatsApp</p>
+      <a href="https://wa.me/+79871577621" target="_blank" class="contact-link">Написать в WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <p class="contact-type">Telegram</p>
+      <a href="https://t.me/Goust_141OTG" target="_blank" class="contact-link">Написать в Telegram</a>
+    </div>
   </div>
 </section>
 
