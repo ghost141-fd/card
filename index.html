@@ -556,73 +556,32 @@
 </main>
 
 <section id="audit-form-section">
-<div id="form-container">
-  <form id="audit-form" action="https://submit-form.com/SLXHiAaGr" method="POST">
-    <h2>Оставить заявку на бесплатный аудит</h2>
+  <div id="form-container">
+    <form action="https://submit-form.com/SLXHiAaGr" method="POST">
+      <h2>Оставить заявку на бесплатный аудит</h2>
 
-    <label>
-      Ваше имя:
-      <input type="text" name="name" placeholder="Иван" id="name-input" required>
-    </label>
+      <label>
+        Ваше имя:
+        <input type="text" name="name" placeholder="Иван" required>
+      </label>
 
-    <label>
-      Телефон:
-      <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
-    </label>
+      <label>
+        Телефон:
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </label>
 
-    <label class="checkbox-group">
-      <input type="checkbox" id="agree-checkbox" required>
-      Согласен с обработкой персональных данных
-    </label>
+      <label class="checkbox-group">
+        <input type="checkbox" name="agree" required>
+        Согласен с обработкой персональных данных
+      </label>
 
-    <button type="submit" id="submit-button" disabled>Отправить заявку</button>
-  </form>
+      <!-- Редирект после успешной отправки -->
+      <input type="hidden" name="_redirect" value="https://ваш-сайт.рф/thanks.html">
 
-  <div id="success-message">
-    Спасибо! В ближайшее время мы с вами свяжемся.
+      <button type="submit">Отправить заявку</button>
+    </form>
   </div>
-</div>
-
-<script>
-  const nameInput = document.getElementById("name-input");
-  const phoneInput = document.getElementById("phone-input");
-  const checkbox = document.getElementById("agree-checkbox");
-  const submitButton = document.getElementById("submit-button");
-  const form = document.getElementById("audit-form");
-  const successMessage = document.getElementById("success-message");
-
-  function validateForm() {
-    const nameValid = nameInput.value.trim().length > 0;
-    const phoneValid = phoneInput.value.trim().length > 0;
-    const checkboxChecked = checkbox.checked;
-    submitButton.disabled = !(nameValid && phoneValid && checkboxChecked);
-  }
-
-  document.addEventListener("DOMContentLoaded", validateForm);
-  nameInput.addEventListener("input", validateForm);
-  phoneInput.addEventListener("input", validateForm);
-  checkbox.addEventListener("change", validateForm);
-
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const formData = new FormData(form);
-    fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        form.style.display = "none";
-        successMessage.style.display = "block";
-      } else {
-        alert("Ошибка при отправке. Попробуйте позже.");
-      }
-    }).catch(() => {
-      alert("Сетевая ошибка. Проверьте интернет.");
-    });
-  });
-</script>
+</section>
 
 <section id="contacts" class="contacts-section">
   <h2 class="contacts-title">Контакты</h2>
