@@ -301,21 +301,31 @@
     font-family: sans-serif;
   }
 
-  form#audit-form h2 {
+  #audit-form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: sans-serif;
+  }
+
+  #audit-form h2 {
     margin-bottom: 20px;
     font-size: 22px;
     text-align: center;
   }
 
-  form#audit-form label {
+  #audit-form label {
     display: block;
     margin-bottom: 15px;
     font-size: 14px;
     color: #333;
   }
 
-  form#audit-form input[type="text"],
-  form#audit-form input[type="tel"] {
+  #audit-form input[type="text"],
+  #audit-form input[type="tel"] {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #ccc;
@@ -324,11 +334,11 @@
     box-sizing: border-box;
   }
 
-  form#audit-form input[type="checkbox"] {
+  #audit-form input[type="checkbox"] {
     margin-right: 8px;
   }
 
-  form#audit-form button {
+  #audit-form button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -340,48 +350,25 @@
     transition: background-color 0.3s ease;
   }
 
-  form#audit-form button:disabled {
+  #audit-form button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
 
-  form#audit-form .checkbox-group {
+  .checkbox-group {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     font-size: 13px;
   }
 
-    .faq-section {
-      background-color: #f9f9f9;
-      padding: 60px 20px;
-      color: #222;
-    }
-
-    .faq-section h2 {
-      color: #1b2634;
-    }
-
-    .faq-section details {
-      background: #fff;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-    .faq-section summary {
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background-color: #111;
-      color: #aaa;
-      font-size: 0.95rem;
-    }
+  #success-message {
+    display: none;
+    text-align: center;
+    font-size: 16px;
+    color: #28a745;
+    padding: 20px;
+  }
   </style>
 </head>
 <body>
@@ -496,26 +483,78 @@
   
 </main>
 </script>
-<form action="https://submit-form.com/SLXHiAaGr" method="POST" id="audit-form">
-  <h2>Оставить заявку на бесплатный аудит</h2>
+<div id="form-container">
+  <form id="audit-form" action="https://submit-form.com/form_v1_W2DkrYixj5QadqK1fd0md7mM" method="POST">
+    <h2>Оставить заявку на бесплатный аудит</h2>
 
-  <label>
-    Ваше имя:
-    <input type="text" name="name" placeholder="Иван" id="name-input" required>
-  </label>
+    <label>
+      Ваше имя:
+      <input type="text" name="name" placeholder="Иван" id="name-input" required>
+    </label>
 
-  <label>
-    Телефон:
-    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
-  </label>
+    <label>
+      Телефон:
+      <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
+    </label>
 
-  <label class="checkbox-group">
-    <input type="checkbox" id="agree-checkbox" required>
-    Согласен с обработкой персональных данных
-  </label>
+    <label class="checkbox-group">
+      <input type="checkbox" id="agree-checkbox" required>
+      Согласен с обработкой персональных данных
+    </label>
 
-  <button type="submit" id="submit-button" disabled>Отправить заявку</button>
-</form>
+    <button type="submit" id="submit-button" disabled>Отправить заявку</button>
+  </form>
+
+  <div id="success-message">
+    Спасибо! В ближайшее время мы с вами свяжемся.<br><br>
+    Возврат на сайт через 3 секунды...
+  </div>
+</div>
+
+<script>
+  const nameInput = document.getElementById("name-input");
+  const phoneInput = document.getElementById("phone-input");
+  const checkbox = document.getElementById("agree-checkbox");
+  const submitButton = document.getElementById("submit-button");
+  const form = document.getElementById("audit-form");
+  const successMessage = document.getElementById("success-message");
+  const formContainer = document.getElementById("form-container");
+
+  function validateForm() {
+    const nameValid = nameInput.value.trim().length > 1;
+    const phoneValid = phoneInput.value.trim().length > 5;
+    const checkboxChecked = checkbox.checked;
+    submitButton.disabled = !(nameValid && phoneValid && checkboxChecked);
+  }
+
+  nameInput.addEventListener("input", validateForm);
+  phoneInput.addEventListener("input", validateForm);
+  checkbox.addEventListener("change", validateForm);
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // остановим стандартную отправку
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = "none";
+        successMessage.style.display = "block";
+        setTimeout(() => {
+          window.location.href = "/"; // замените на нужную страницу, если не корневая
+        }, 3000);
+      } else {
+        alert("Ошибка при отправке формы. Попробуйте позже.");
+      }
+    }).catch(error => {
+      alert("Ошибка соединения. Попробуйте позже.");
+    });
+  });
 
 <script>
   const nameInput = document.getElementById("name-input");
