@@ -39,7 +39,30 @@
       padding: 30px 40px;
       color: white;
     }
-
+   /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
     .hero::before {
       content: "";
       position: absolute;
@@ -362,7 +385,14 @@
   </style>
 </head>
 <body>
-
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#main">Главная</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-header">Продвижение бизнеса на Яндекс картах</h1>
