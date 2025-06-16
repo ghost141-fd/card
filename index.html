@@ -483,34 +483,35 @@
   
 </main>
 
-</script>
-<div id="form-container">
-  <form id="audit-form" action="https://submit-form.com/form_v1_W2DkrYixj5QadqK1fd0md7mM" method="POST">
-    <h2>Оставить заявку на бесплатный аудит</h2>
+<section id="audit-form-section">
+  <div id="form-container">
+    <form id="audit-form" action="https://submit-form.com/form_v1_W2DkrYixj5QadqK1fd0md7mM" method="POST">
+      <h2>Оставить заявку на бесплатный аудит</h2>
 
-    <label>
-      Ваше имя:
-      <input type="text" name="name" placeholder="Иван" id="name-input" required>
-    </label>
+      <label>
+        Ваше имя:
+        <input type="text" name="name" placeholder="Иван" id="name-input" required>
+      </label>
 
-    <label>
-      Телефон:
-      <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
-    </label>
+      <label>
+        Телефон:
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" id="phone-input" required>
+      </label>
 
-    <label class="checkbox-group">
-      <input type="checkbox" id="agree-checkbox" required>
-      Согласен с обработкой персональных данных
-    </label>
+      <label class="checkbox-group">
+        <input type="checkbox" id="agree-checkbox" required>
+        Согласен с обработкой персональных данных
+      </label>
 
-    <button type="submit" id="submit-button" disabled>Отправить заявку</button>
-  </form>
+      <button type="submit" id="submit-button" disabled>Отправить заявку</button>
+    </form>
 
-  <div id="success-message">
-    Спасибо! В ближайшее время мы с вами свяжемся.<br><br>
-    Перенаправляем на сайт...
+    <div id="success-message" style="display:none;">
+      Спасибо! В ближайшее время мы с вами свяжемся.<br><br>
+      Перенаправляем на сайт...
+    </div>
   </div>
-</div>
+</section>
 
 <script>
   const nameInput = document.getElementById("name-input");
@@ -545,7 +546,7 @@
         form.style.display = "none";
         successMessage.style.display = "block";
         setTimeout(() => {
-          window.location.href = "/"; // ← можешь указать свой URL (например, "/thanks" или "/#form")
+          window.location.href = "/"; // Здесь можно свой URL
         }, 3000);
       } else {
         alert("Ошибка при отправке. Попробуйте позже.");
@@ -554,6 +555,8 @@
       alert("Сетевая ошибка. Проверьте интернет.");
     });
   });
+</script>
+
 </script>
   <section id="faq" class="faq-section">
   <h2>Часто задаваемые вопросы</h2>
