@@ -739,21 +739,6 @@
     });
   </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
-      if (el) {
-        setTimeout(() => {
-          window.scrollTo({
-            top: el.offsetTop - 80,
-            behavior: "smooth"
-          });
-        }, 200); // небольшой таймер на случай, если DOM не успеет прогрузиться
-      }
-    }
-  });
-</script>
-  
+
 </body>
 </html>
