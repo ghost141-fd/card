@@ -497,33 +497,35 @@
 
 <section id="audit-section">
   <div id="form-container">
-    <form id="audit-form" action="https://submit-form.com/SLXHiAaGr" method="POST">
-      <h2>Оставить заявку на бесплатный аудит</h2>
-
-      <label>
-        Ваше имя:
-        <input type="text" name="name" placeholder="Иван" required>
-      </label>
-      <br><br>
-
-      <label>
-        Телефон:
-        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
-      </label>
-      <br><br>
-
-      <label>
-        <input type="checkbox" name="agree" required>
-        Согласен с обработкой персональных данных
-      </label>
-      <br><br>
-
-      <button type="submit">Отправить заявку</button>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Ваше имя" required />
+      <input type="tel" name="phone" placeholder="Телефон" required />
+      <button type="submit">Отправить</button>
     </form>
   </div>
 </section>
 
-<style>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const payload = {
+      name: formData.get('name'),
+      phone: formData.get('phone')
+    };
+
+    await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    alert("Заявка отправлена!");
+    this.reset();
+  });
+</script>
+
+  <style>
   #audit-section {
     max-width: 400px;
     margin: 30px auto;
