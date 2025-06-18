@@ -394,7 +394,7 @@
   </div>
   <div class="hero-footer">
     <div class="hero-buttons">
-      <a href="#form-container">Бесплатный аудит</a>
+      <a href="#audit-section">Бесплатный аудит</a>
      </a>
       <a href="#contacts">Контакты</a>
       </a>
@@ -497,52 +497,87 @@
 
 <section id="audit-section">
   <h2>Оставьте заявку</h2>
-  <form id="audit-form">
-    <label>
-      Ваше имя:
-      <input type="text" name="name" id="name" required />
-    </label>
-    <label>
-      Телефон:
-      <input type="tel" name="phone" id="phone" required />
-    </label>
-    <label>
-      <input type="checkbox" id="consent" required />
-      Согласие на обработку персональных данных
-    </label>
-    <button type="submit" id="submit-btn" disabled>Отправить</button>
-  </form>
+<form id="contact-form">
+  <label>
+    Имя:<br>
+    <input type="text" id="name" name="name" />
+  </label>
+  <br><br>
+  <label>
+    Телефон:<br>
+    <input type="text" id="phone" name="phone" />
+  </label>
+  <br><br>
+  <label>
+    <input type="checkbox" id="consent" name="consent" />
+    Я согласен на обработку персональных данных
+  </label>
+  <br><br>
+  <button type="submit" id="submit-btn">Отправить</button>
+</form>
 
-  <!-- Скрытый блок для "Спасибо" -->
-  <div id="audit-success" style="display:none; text-align:center; padding:20px;">
-    <div style="font-size:40px; color:green;">✔</div>
-    <p>Спасибо! В ближайшее время мы свяжемся с вами.</p>
-  </div>
-</section>
+<div id="success" style="display: none; padding: 20px; border: 2px solid #4CAF50; border-radius: 10px; background: #e6ffee;">
+  ✅ Спасибо! В ближайшее время мы свяжемся с вами.
+</div>
 
 <script>
-  const form = document.getElementById("audit-form");
+  const form = document.getElementById("contact-form");
   const nameInput = document.getElementById("name");
   const phoneInput = document.getElementById("phone");
   const consentCheckbox = document.getElementById("consent");
   const submitBtn = document.getElementById("submit-btn");
-  const successBlock = document.getElementById("audit-success");
+  const successBlock = document.getElementById("success");
 
-  // Разрешаем кнопку только при заполненных полях и галочке
-  function updateSubmitState() {
-    submitBtn.disabled = !(
-      nameInput.value.trim() &&
-      phoneInput.value.trim() &&
-      consentCheckbox.checked
-    );
+  function showError(input, message) {
+    let error = input.parentElement.querySelector(".error-msg");
+    if (!error) {
+      error = document.createElement("div");
+      error.className = "error-msg";
+      error.style.color = "red";
+      error.style.fontSize = "14px";
+      error.style.marginTop = "4px";
+      input.parentElement.appendChild(error);
+    }
+    error.textContent = message;
   }
 
-  nameInput.addEventListener("input", updateSubmitState);
-  phoneInput.addEventListener("input", updateSubmitState);
-  consentCheckbox.addEventListener("change", updateSubmitState);
+  function clearError(input) {
+    const error = input.parentElement.querySelector(".error-msg");
+    if (error) error.remove();
+  }
+
+  [nameInput, phoneInput].forEach((input) => {
+    input.addEventListener("input", () => clearError(input));
+  });
+  consentCheckbox.addEventListener("change", () => clearError(consentCheckbox));
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    let hasError = false;
+    clearError(nameInput);
+    clearError(phoneInput);
+    clearError(consentCheckbox);
+
+    if (!nameInput.value.trim()) {
+      showError(nameInput, "Введите имя");
+      hasError = true;
+    }
+
+    if (!phoneInput.value.trim()) {
+      showError(phoneInput, "Введите номер телефона");
+      hasError = true;
+    }
+
+    if (!consentCheckbox.checked) {
+      showError(consentCheckbox, "Необходимо согласие на обработку");
+      hasError = true;
+    }
+
+    if (hasError) {
+      form.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Отправка...";
@@ -561,12 +596,12 @@
         form.style.display = "none";
         successBlock.style.display = "block";
       } else {
-        alert("Ошибка отправки. Попробуйте позже.");
+        alert("Ошибка при отправке. Попробуйте позже.");
         submitBtn.textContent = "Отправить";
         submitBtn.disabled = false;
       }
     } catch (err) {
-      alert("Ошибка сети. Попробуйте позже.");
+      alert("Ошибка соединения. Попробуйте позже.");
       submitBtn.textContent = "Отправить";
       submitBtn.disabled = false;
     }
