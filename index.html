@@ -499,6 +499,7 @@
   <h2 style="margin-bottom: 20px; font-size: 22px; text-align: center;">Оставьте заявку</h2>
   
   <form id="contactForm">
+    <!-- Поля формы остаются без изменений -->
     <div style="margin-bottom: 15px;">
       <label style="display: block; margin-bottom: 5px; font-size: 14px; color: #333;">Имя:</label>
       <input type="text" id="userName" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
@@ -534,29 +535,45 @@ document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   if (!contactForm) return;
 
-  // Инициализация маски телефона с поддержкой 8 и +7
   const phoneInput = document.getElementById('userPhone');
+  
+  // Инициализация маски с улучшенной обработкой вставки
   const phoneMask = IMask(phoneInput, {
     mask: '+{7} (000) 000-00-00',
     prepare: function(str, index) {
-      // Разрешаем ввод 8 в начале без автоматической замены на +7
       if (index === 0 && str === '8') return '8';
       return str;
     }
   });
 
-  // Обработчик отправки формы
+  // Обработчик вставки номера
+  phoneInput.addEventListener('paste', function(e) {
+    e.preventDefault();
+    const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+    const cleanNumber = pastedText.replace(/\D/g, '');
+    
+    // Обрабатываем разные форматы вставки
+    if (cleanNumber.length >= 11 && cleanNumber.startsWith('89')) {
+      // Для номеров типа 89XXXXXXXXX
+      phoneMask.unmaskedValue = cleanNumber.substring(1);
+    } else if (cleanNumber.length >= 10 && cleanNumber.startsWith('9')) {
+      // Для номеров типа 9XXXXXXXXX
+      phoneMask.unmaskedValue = cleanNumber;
+    } else if (cleanNumber.length >= 11) {
+      // Для других 11-значных номеров
+      phoneMask.unmaskedValue = cleanNumber.substring(cleanNumber.length - 10);
+    }
+  });
+
+  // Остальной код обработки формы остается без изменений
   contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Сбрасываем все ошибки
     document.querySelectorAll('[id$="Error"]').forEach(el => {
       el.style.display = 'none';
     });
     
     let isValid = true;
-    
-    // Валидация имени
     const name = document.getElementById('userName').value.trim();
     if (name.length < 2) {
       document.getElementById('nameError').textContent = 'Введите имя (минимум 2 символа)';
@@ -564,12 +581,10 @@ document.addEventListener('DOMContentLoaded', function() {
       isValid = false;
     }
     
-    // Валидация телефона
     const phoneValue = phoneInput.value;
     const cleanPhone = phoneValue.replace(/\D/g, '');
     
-    // Проверяем все возможные форматы:
-    // 8XXXXXXXXXX (11 цифр), +7XXXXXXXXXX (11 цифр), 7XXXXXXXXX (10 цифр)
+    // Проверяем номер с учетом возможных форматов
     const isPhoneValid = (
       (phoneValue.startsWith('8') && cleanPhone.length === 11) ||
       (phoneValue.startsWith('+7') && cleanPhone.length === 11) ||
@@ -582,7 +597,6 @@ document.addEventListener('DOMContentLoaded', function() {
       isValid = false;
     }
     
-    // Валидация согласия
     if (!document.getElementById('userAgree').checked) {
       document.getElementById('agreeError').textContent = 'Необходимо ваше согласие';
       document.getElementById('agreeError').style.display = 'block';
@@ -591,23 +605,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!isValid) return;
     
-    // Блокируем кнопку отправки
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправка...';
     
     try {
-      // Нормализуем номер для отправки (сохраняем исходный формат)
+      // Нормализация номера перед отправкой
       let phoneToSend = phoneValue;
-      
-      // Если нужно привести к единому формату на клиенте:
       if (phoneValue.startsWith('8')) {
         phoneToSend = '+7' + phoneValue.substring(1);
       } else if (phoneValue.startsWith('7') && !phoneValue.startsWith('+7')) {
         phoneToSend = '+7' + phoneValue;
       }
       
-      // Отправка данных
       const response = await fetch('https://black-grass-42c1.ghost-fd141.workers.dev/', {
         method: 'POST',
         headers: {
@@ -620,7 +630,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
       if (response.ok) {
-        // Показываем сообщение об успехе
         contactForm.style.display = 'none';
         document.getElementById('successMessage').style.display = 'block';
       } else {
@@ -632,14 +641,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Отправить';
-    }
-  });
-  
-  // Дополнительная обработка автозаполнения
-  phoneInput.addEventListener('change', function() {
-    const value = this.value.replace(/\D/g, '');
-    if (value.length === 11 && value.startsWith('8')) {
-      this.value = '8' + value.substring(1);
     }
   });
 });
