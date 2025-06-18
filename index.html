@@ -496,25 +496,84 @@
 </main>
 
 <section id="audit-section">
-  <h2>Оставьте заявку на аудит</h2>
-  <div id="form-container">
-    <form id="contactForm">
-      <label>
-        <input type="text" name="name" id="name" placeholder="Ваше имя" required />
-      </label>
-      <label>
-        <input type="tel" name="phone" id="phone" placeholder="Номер телефона" required />
-      </label>
-      <label style="display: flex; align-items: center; font-size: 13px;">
-        <input type="checkbox" id="agree" required />
-        <span>Я согласен на обработку персональных данных</span>
-      </label>
-      <button type="submit" id="submitBtn" disabled>Отправить</button>
-    </form>
+  <h2>Оставьте заявку</h2>
+  <form id="audit-form">
+    <label>
+      Ваше имя:
+      <input type="text" name="name" id="name" required />
+    </label>
+    <label>
+      Телефон:
+      <input type="tel" name="phone" id="phone" required />
+    </label>
+    <label>
+      <input type="checkbox" id="consent" required />
+      Согласие на обработку персональных данных
+    </label>
+    <button type="submit" id="submit-btn" disabled>Отправить</button>
+  </form>
+
+  <!-- Скрытый блок для "Спасибо" -->
+  <div id="audit-success" style="display:none; text-align:center; padding:20px;">
+    <div style="font-size:40px; color:green;">✔</div>
+    <p>Спасибо! В ближайшее время мы свяжемся с вами.</p>
   </div>
 </section>
 
-<style>
+<script>
+  const form = document.getElementById("audit-form");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+  const consentCheckbox = document.getElementById("consent");
+  const submitBtn = document.getElementById("submit-btn");
+  const successBlock = document.getElementById("audit-success");
+
+  // Разрешаем кнопку только при заполненных полях и галочке
+  function updateSubmitState() {
+    submitBtn.disabled = !(
+      nameInput.value.trim() &&
+      phoneInput.value.trim() &&
+      consentCheckbox.checked
+    );
+  }
+
+  nameInput.addEventListener("input", updateSubmitState);
+  phoneInput.addEventListener("input", updateSubmitState);
+  consentCheckbox.addEventListener("change", updateSubmitState);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Отправка...";
+
+    try {
+      const res = await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameInput.value.trim(),
+          phone: phoneInput.value.trim(),
+        }),
+      });
+
+      if (res.ok) {
+        form.style.display = "none";
+        successBlock.style.display = "block";
+      } else {
+        alert("Ошибка отправки. Попробуйте позже.");
+        submitBtn.textContent = "Отправить";
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      alert("Ошибка сети. Попробуйте позже.");
+      submitBtn.textContent = "Отправить";
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+  <style>
   #audit-section {
     max-width: 400px;
     margin: 30px auto;
