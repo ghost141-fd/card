@@ -313,8 +313,8 @@
       padding: 25px;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  
     }
+
   #success-message {
     display: none;
     text-align: center;
@@ -394,7 +394,7 @@
   </div>
   <div class="hero-footer">
     <div class="hero-buttons">
-      <a href="#">Бесплатный аудит</a>
+      <a href="#form-container">Бесплатный аудит</a>
      </a>
       <a href="#contacts">Контакты</a>
       </a>
@@ -496,126 +496,41 @@
 </main>
 
 <section id="audit-section">
-  <h2>Оставьте заявку</h2>
-<form id="contact-form">
-  <label>
-    Имя:<br>
-    <input type="text" id="name" name="name" />
-  </label>
-  <br><br>
-  <label>
-    Телефон:<br>
-    <input type="text" id="phone" name="phone" />
-  </label>
-  <br><br>
-  <label>
-    <input type="checkbox" id="consent" name="consent" />
-    Я согласен на обработку персональных данных
-  </label>
-  <br><br>
-  <button type="submit" id="submit-btn">Отправить</button>
-</form>
+  <div id="form-container">
+    <form id="audit-form" action="https://submit-form.com/SLXHiAaGr" method="POST">
+      <h2>Оставить заявку на бесплатный аудит</h2>
 
-<div id="success" style="display: none; padding: 20px; border: 2px solid #4CAF50; border-radius: 10px; background: #e6ffee;">
-  ✅ Спасибо! В ближайшее время мы свяжемся с вами.
-</div>
+      <label>
+        Ваше имя:
+        <input type="text" name="name" placeholder="Иван" required>
+      </label>
+      <br><br>
 
-<script>
-  const form = document.getElementById("contact-form");
-  const nameInput = document.getElementById("name");
-  const phoneInput = document.getElementById("phone");
-  const consentCheckbox = document.getElementById("consent");
-  const submitBtn = document.getElementById("submit-btn");
-  const successBlock = document.getElementById("success");
+      <label>
+        Телефон:
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </label>
+      <br><br>
 
-  function showError(input, message) {
-    let error = input.parentElement.querySelector(".error-msg");
-    if (!error) {
-      error = document.createElement("div");
-      error.className = "error-msg";
-      error.style.color = "red";
-      error.style.fontSize = "14px";
-      error.style.marginTop = "4px";
-      input.parentElement.appendChild(error);
-    }
-    error.textContent = message;
-  }
+      <label>
+        <input type="checkbox" name="agree" required>
+        Согласен с обработкой персональных данных
+      </label>
+      <br><br>
 
-  function clearError(input) {
-    const error = input.parentElement.querySelector(".error-msg");
-    if (error) error.remove();
-  }
+      <button type="submit">Отправить заявку</button>
+    </form>
+  </div>
+</section>
 
-  [nameInput, phoneInput].forEach((input) => {
-    input.addEventListener("input", () => clearError(input));
-  });
-  consentCheckbox.addEventListener("change", () => clearError(consentCheckbox));
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    let hasError = false;
-    clearError(nameInput);
-    clearError(phoneInput);
-    clearError(consentCheckbox);
-
-    if (!nameInput.value.trim()) {
-      showError(nameInput, "Введите имя");
-      hasError = true;
-    }
-
-    if (!phoneInput.value.trim()) {
-      showError(phoneInput, "Введите номер телефона");
-      hasError = true;
-    }
-
-    if (!consentCheckbox.checked) {
-      showError(consentCheckbox, "Необходимо согласие на обработку");
-      hasError = true;
-    }
-
-    if (hasError) {
-      form.scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Отправка...";
-
-    try {
-      const res = await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: nameInput.value.trim(),
-          phone: phoneInput.value.trim(),
-        }),
-      });
-
-      if (res.ok) {
-        form.style.display = "none";
-        successBlock.style.display = "block";
-      } else {
-        alert("Ошибка при отправке. Попробуйте позже.");
-        submitBtn.textContent = "Отправить";
-        submitBtn.disabled = false;
-      }
-    } catch (err) {
-      alert("Ошибка соединения. Попробуйте позже.");
-      submitBtn.textContent = "Отправить";
-      submitBtn.disabled = false;
-    }
-  });
-</script>
-
-  <style>
+<style>
   #audit-section {
     max-width: 400px;
     margin: 30px auto;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     font-family: sans-serif;
   }
 
@@ -642,6 +557,10 @@
     box-sizing: border-box;
   }
 
+  #audit-section input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
   #audit-section button {
     width: 100%;
     padding: 12px;
@@ -660,70 +579,23 @@
   }
 </style>
 
-<script src="https://unpkg.com/imask"></script>
-<script>
-  // Маска для телефона
-  const phoneInput = document.getElementById('phone');
-  const maskOptions = {
-    mask: '+{7} (000) 000-00-00'
-  };
-  IMask(phoneInput, maskOptions);
-
-  // Валидация формы
-  const nameInput = document.getElementById('name');
-  const agreeCheckbox = document.getElementById('agree');
-  const submitBtn = document.getElementById('submitBtn');
-
-  function validateForm() {
-    const nameValid = nameInput.value.trim().length > 1;
-    const phoneValid = phoneInput.value.trim().length === 18; // формат "+7 (999) 999-99-99"
-    const isAgreed = agreeCheckbox.checked;
-
-    submitBtn.disabled = !(nameValid && phoneValid && isAgreed);
-  }
-
-  nameInput.addEventListener('input', validateForm);
-  phoneInput.addEventListener('input', validateForm);
-  agreeCheckbox.addEventListener('change', validateForm);
-
-  // Отправка формы
-  document.getElementById('contactForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const payload = {
-      name: formData.get('name'),
-      phone: formData.get('phone')
-    };
-
-    await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    alert("Заявка отправлена!");
-    this.reset();
-    submitBtn.disabled = true;
-  });
-</section>
-
-  <section id="contacts" class="contacts-section">
-    <h2 class="contacts-title">Контакты</h2>
-    <div class="contacts-cards">
-      <div class="contact-card">
-        <p class="contact-type">Телефон</p>
-        <a href="tel:+79871577621" class="contact-link">+7 (987) 157-76-21</a>
-      </div>
-      <div class="contact-card">
-        <p class="contact-type">WhatsApp</p>
-        <a href="https://wa.me/+79871577621" target="_blank" class="contact-link">Написать в WhatsApp</a>
-      </div>
-      <div class="contact-card">
-        <p class="contact-type">Telegram</p>
-        <a href="https://t.me/Goust_141OTG" target="_blank" class="contact-link">Написать в Telegram</a>
-      </div>
+<section id="contacts" class="contacts-section">
+  <h2 class="contacts-title">Контакты</h2>
+  <div class="contacts-cards">
+    <div class="contact-card">
+      <p class="contact-type">Телефон</p>
+      <a href="tel:+79871577621" class="contact-link">+7 (987) 157-76-21</a>
     </div>
-  </section>
+    <div class="contact-card">
+      <p class="contact-type">WhatsApp</p>
+      <a href="https://wa.me/+79871577621" target="_blank" class="contact-link">Написать в WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <p class="contact-type">Telegram</p>
+      <a href="https://t.me/Goust_141OTG" target="_blank" class="contact-link">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
 
   </script>
 <section id="faq" class="faq-section">
@@ -868,17 +740,5 @@
     });
   </script>
 
-<script>
-  window.addEventListener("load", () => {
-    const hash = window.location.hash;
-    if (hash && document.querySelector(hash)) {
-      window.scrollTo({
-        top: document.querySelector(hash).offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-  });
-</script>
-  
 </body>
 </html>
