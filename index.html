@@ -497,7 +497,7 @@
 
 <section id="audit-section">
   <div id="form-container">
-    <form id="audit-form" action="https://submit-form.com/SLXHiAaGr" method="POST">
+    <form id="audit-form" action="https://formcarry.com/s/zQJdUD9BI6V" method="POST" accept-charset="UTF-8">
       <h2>Оставить заявку на бесплатный аудит</h2>
 
       <label>
@@ -522,6 +522,33 @@
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('audit-form');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // отменяем стандартную отправку формы
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        window.location.href = 'https://yourdomain.com/thanks'; // замени на свою ссылку
+      } else {
+        alert('Ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
+      }
+    }).catch(error => {
+      alert('Произошла ошибка. Попробуйте позже.');
+    });
+  });
+</script>
+
 
 <style>
   #audit-section {
