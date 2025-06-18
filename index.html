@@ -495,119 +495,141 @@
   
 </main>
 
-<section id="audit-section" style="margin: 30px auto; max-width: 400px;">
-  <h2>Оставьте заявку на бесплатный аудит</h2>
-  <form id="contact-form">
-    <label>
+<section id="audit-section" style="margin: 30px auto; max-width: 400px; padding: 20px; background: #f9f9f9; border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); font-family: sans-serif;">
+  <h2 style="margin-bottom: 20px; font-size: 22px; text-align: center;">Оставьте заявку</h2>
+  
+  <form id="contact-form" novalidate>
+    <label style="display: block; margin-bottom: 15px; font-size: 14px; color: #333;">
       Имя:<br>
-      <input type="text" id="name" name="name" />
+      <input type="text" id="name" name="name" required minlength="2" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
     </label>
-    <br><br>
-    <label>
+    <div id="name-error" class="error-msg" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+    
+    <br>
+    
+    <label style="display: block; margin-bottom: 15px; font-size: 14px; color: #333;">
       Телефон:<br>
-      <input type="text" id="phone" name="phone" />
+      <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
     </label>
-    <br><br>
-    <label>
-      <input type="checkbox" id="consent" name="consent" />
+    <div id="phone-error" class="error-msg" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+    
+    <br>
+    
+    <label style="display: block; margin-bottom: 15px; font-size: 14px; color: #333;">
+      <input type="checkbox" id="consent" name="consent" required style="margin-right: 8px;">
       Я согласен на обработку персональных данных
     </label>
-    <br><br>
-    <button type="submit" id="submit-btn">Отправить</button>
+    <div id="consent-error" class="error-msg" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+    
+    <br>
+    
+    <button type="submit" id="submit-btn" style="width: 100%; padding: 12px; background-color: #007bff; color: white; font-size: 16px; border: none; border-radius: 10px; cursor: pointer; transition: background-color 0.3s ease;">
+      Отправить
+    </button>
   </form>
 
-  <div id="success" style="display: none; text-align: center; padding: 20px;">
-    <div style="font-size: 40px; color: green;">✔</div>
+  <div id="form-error" style="color: #dc3545; text-align: center; margin-top: 15px; display: none;"></div>
+  
+  <!-- Блок успешного отправления -->
+  <div id="audit-success" style="display:none; text-align:center; padding:20px;">
+    <div style="font-size:40px; color:green;">✔</div>
     <p>Спасибо! В ближайшее время мы свяжемся с вами.</p>
   </div>
 </section>
 
+<!-- Подключаем необходимые библиотеки -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
+<script src="https://unpkg.com/imask"></script>
+
 <script>
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById("contact-form");
-  const nameInput = document.getElementById("name");
-  const phoneInput = document.getElementById("phone");
-  const consentCheckbox = document.getElementById("consent");
-  const submitBtn = document.getElementById("submit-btn");
-  const successBlock = document.getElementById("success");
-
-  function showError(input, message) {
-    let error = input.parentElement.querySelector(".error-msg");
-    if (!error) {
-      error = document.createElement("div");
-      error.className = "error-msg";
-      error.style.color = "red";
-      error.style.fontSize = "14px";
-      error.style.marginTop = "4px";
-      input.parentElement.appendChild(error);
-    }
-    error.textContent = message;
-  }
-
-  function clearError(input) {
-    const error = input.parentElement.querySelector(".error-msg");
-    if (error) error.remove();
-  }
-
-  [nameInput, phoneInput].forEach((input) => {
-    input.addEventListener("input", () => clearError(input));
+  const successBlock = document.getElementById("audit-success");
+  
+  // Инициализация маски телефона
+  const phoneInput = document.getElementById('phone');
+  const phoneMask = new IMask(phoneInput, {
+    mask: '+{7} (000) 000-00-00'
   });
-  consentCheckbox.addEventListener("change", () => clearError(consentCheckbox));
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async function(e) {
     e.preventDefault();
-
-    let hasError = false;
-    clearError(nameInput);
-    clearError(phoneInput);
-    clearError(consentCheckbox);
-
-    if (!nameInput.value.trim()) {
-      showError(nameInput, "Введите имя");
-      hasError = true;
+    clearErrors();
+    
+    let isValid = true;
+    
+    // Валидация имени
+    const name = document.getElementById('name').value.trim();
+    if (name.length < 2) {
+      showError('name-error', 'Введите корректное имя (минимум 2 символа)');
+      isValid = false;
     }
-
-    if (!phoneInput.value.trim()) {
-      showError(phoneInput, "Введите номер телефона");
-      hasError = true;
+    
+    // Валидация телефона
+    const phone = phoneMask.unmaskedValue;
+    if (phone.length !== 10) { // 10 цифр без +7
+      showError('phone-error', 'Введите полный номер телефона (10 цифр)');
+      isValid = false;
     }
-
-    if (!consentCheckbox.checked) {
-      showError(consentCheckbox, "Необходимо согласие на обработку");
-      hasError = true;
+    
+    // Валидация чекбокса
+    if (!document.getElementById('consent').checked) {
+      showError('consent-error', 'Необходимо ваше согласие');
+      isValid = false;
     }
-
-    if (hasError) {
-      form.scrollIntoView({ behavior: "smooth" });
+    
+    if (!isValid) {
       return;
     }
-
+    
+    const submitBtn = document.getElementById('submit-btn');
     submitBtn.disabled = true;
     submitBtn.textContent = "Отправка...";
-
+    
     try {
-      const res = await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
+      const response = await fetch("https://black-grass-42c1.ghost-fd141.workers.dev/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify({
-          name: nameInput.value.trim(),
-          phone: phoneInput.value.trim(),
+          name: name,
+          phone: '+7' + phone
         }),
       });
-
-      if (res.ok) {
+      
+      if (response.ok) {
         form.style.display = "none";
+        document.getElementById('form-error').style.display = "none";
         successBlock.style.display = "block";
       } else {
-        alert("Ошибка при отправке. Попробуйте позже.");
-        submitBtn.textContent = "Отправить";
-        submitBtn.disabled = false;
+        throw new Error('Ошибка сервера: ' + response.status);
       }
-    } catch (err) {
-      alert("Ошибка соединения. Попробуйте позже.");
-      submitBtn.textContent = "Отправить";
+    } catch (error) {
+      showError('form-error', 'Ошибка отправки. Попробуйте позже или свяжитесь с нами другим способом.');
       submitBtn.disabled = false;
+      submitBtn.textContent = "Отправить";
     }
   });
+  
+  function showError(id, message) {
+    const errorElement = document.getElementById(id);
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+  }
+  
+  function clearErrors() {
+    document.querySelectorAll('.error-msg').forEach(el => {
+      el.textContent = '';
+      el.style.display = 'none';
+    });
+    document.getElementById('form-error').style.display = 'none';
+  }
+});
 </script>
 
 <style>
